@@ -1371,15 +1371,51 @@
       </div>
       <div class="privacy-text reveal">
         <p>
-          미리엄은 사용자의 건강·운동 데이터를 외부로 전송하지 않습니다.
-          러닝 기록은 HealthKit 에서 읽어 디바이스 내부에만 저장됩니다.
-          분석 SDK, 광고 SDK, 사용자 추적 도구를 사용하지 않습니다.
+          미리엄은 사용자의 건강·운동 데이터를 외부 서버로 전송하지 않습니다.
+          러닝 기록은 HealthKit 에서 읽어 디바이스 내부에만 저장되며,
+          분석 SDK, 광고 SDK, 사용자 추적 도구를 일체 사용하지 않습니다.
         </p>
         <p>
-          외부 통신은 코스 지도 타일(Apple Maps)과 주소 표기를 위한
-          역지오코딩에 한정되며, Apple 의 표준 API 를 통해 처리됩니다.
+          <strong>HealthKit 데이터 처리.</strong>
+          HealthKit 에서 읽은 워크아웃·심박·경로 등 건강 정보는
+          광고 목적으로 사용하지 않으며, 제3자에게 판매하거나 공유하지 않습니다.
+          외부 분석 서비스로 전송하지 않고, 오직 사용자 본인의 기록을
+          정리·시각화하기 위한 용도로만 디바이스 내부에서 처리됩니다.
         </p>
-        <!-- TODO: add link to /privacy.html once it exists -->
+        <p>
+          <strong>iCloud 동기화 (목표·코스 한정).</strong>
+          앱을 삭제하고 재설치해도 목표와 코스 설정이 복원되도록,
+          이 두 가지 항목만 Apple 의 iCloud Key-Value Store 에 저장합니다.
+          러닝 기록, 심박, 경로 등 HealthKit 데이터는 iCloud 에
+          올리지 않습니다. iCloud 동기화는 사용자가 디바이스에서
+          iCloud 에 로그인된 경우에만 작동하며, 같은 Apple ID 안에서만
+          기기 간에 공유됩니다.
+        </p>
+        <p>
+          <strong>외부 통신.</strong>
+          코스 지도 타일은 Apple Maps 에서 가져옵니다.
+          코스 위치의 동·지명 표기를 위해 좌표를 Apple 의
+          역지오코딩 API 에 한 차례 보내고 그 결과를 디바이스에
+          캐시합니다. 두 통신 모두 Apple 의 표준 API 를 통해 처리되며,
+          Apple 의 개인정보 처리방침이 적용됩니다.
+        </p>
+        <p>
+          <strong>데이터 보존 및 삭제.</strong>
+          러닝 기록·캐시·설정은 모두 디바이스 안의 앱 영역에 저장되므로,
+          앱을 삭제하면 함께 사라집니다. (위 iCloud 항목에 따라 목표·코스만
+          iCloud 에 별도 보관되며, iCloud 설정 → 저장공간 → 미리엄에서
+          직접 삭제할 수 있습니다.) HealthKit 원본 데이터는
+          미리엄이 만들거나 수정하지 않으며, 건강 앱에서 직접 관리됩니다.
+        </p>
+        <p>
+          <strong>문의.</strong>
+          개인정보 처리와 관련한 문의는
+          <a href="https://github.com/ninehobbes/miriam-app/issues">GitHub Issues</a>
+          또는 이메일로 보내주시면 됩니다.
+        </p>
+        <p style="margin-top: 20px; font-size: 13px; color: var(--fg-on-light-muted);">
+          최종 수정일: 2026년 5월 25일
+        </p>
       </div>
     </div>
   </section>
