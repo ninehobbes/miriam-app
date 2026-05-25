@@ -1,0 +1,1435 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>미리엄 — Apple Watch의 러닝 기록을 재발견하세요</title>
+  <meta name="description"
+    content="HealthKit의 러닝 기록을 기간·코스·거리별로 살펴보고, 트렌드와 순위, 수상 이력까지 한눈에 확인하세요. 나만의 목표를 설정하고 연속 달성을 이어가세요." />
+
+  <meta property="og:title" content="미리엄 — Apple Watch의 러닝 기록을 재발견하세요" />
+  <meta property="og:description"
+    content="HealthKit의 러닝 기록을 기간·코스·거리별로 살펴보고, 트렌드와 순위, 수상 이력까지 한눈에 확인하세요. 나만의 목표를 설정하고 연속 달성을 이어가세요." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/app-icon.png" />
+
+  <link rel="icon" type="image/png" href="assets/app-icon.png" />
+
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --ink-rise: #1c1c24;
+      --ink-soft: #161616;
+      --ink-rule: #242424;
+      --paper: #ffffff;
+      --paper-soft: #f4f4f2;
+      --paper-rule: #e3e3e3;
+      --fg-on-dark: #ededed;
+      --fg-on-dark-soft: #9a9a9a;
+      --fg-on-dark-muted: #6a6a6a;
+      --fg-on-light: #0a0a0a;
+      --fg-on-light-soft: #555555;
+      --fg-on-light-muted: #8a8a8a;
+      /* Miriam app accent — from AccentColor.colorset */
+      --accent: #a6ff00;
+      /* dark-bg variant (vivid lime) */
+      --accent-on-light: #2cb52c;
+      /* light-bg variant */
+      --max: 1180px;
+      --gutter: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+        "Apple SD Gothic Neo", "Pretendard Variable", Pretendard,
+        "Helvetica Neue", "Noto Sans KR", sans-serif;
+      background: var(--ink);
+      color: var(--fg-on-dark);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ===== NAV ===== */
+    nav.top {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      background: color-mix(in srgb, var(--ink) 72%, transparent);
+      border-bottom: 1px solid var(--ink-rule);
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    nav.top.on-light {
+      background: color-mix(in srgb, var(--paper) 82%, transparent);
+      border-bottom-color: var(--paper-rule);
+      color: var(--fg-on-light);
+    }
+
+    nav.top .inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav.top .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
+    nav.top .brand img {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+    }
+
+    nav.top .links {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      opacity: 0.75;
+    }
+
+    nav.top .links a:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 820px) {
+      nav.top .links {
+        display: none;
+      }
+    }
+
+    /* ===== SECTION SHELL ===== */
+    section {
+      padding: 112px 0;
+    }
+
+    section.dark {
+      background: var(--ink);
+      color: var(--fg-on-dark);
+    }
+
+    section.light {
+      background: var(--paper);
+      color: var(--fg-on-light);
+    }
+
+    section.softlight {
+      background: var(--paper-soft);
+      color: var(--fg-on-light);
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      letter-spacing: 0;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 96px 0 78px;
+    }
+
+    .hero .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.8fr);
+      gap: 72px;
+      align-items: center;
+    }
+
+    @media (max-width: 920px) {
+      .hero .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+
+    .hero .meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+      color: var(--fg-on-dark-soft);
+      margin-bottom: 34px;
+    }
+
+    .hero .meta img {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      line-height: 1.08;
+      font-weight: 600;
+      max-width: 18ch;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 820px) {
+      .hero h1 {
+        font-size: 42px;
+      }
+    }
+
+    .hero p.sub {
+      font-size: 19px;
+      color: var(--fg-on-dark-soft);
+      max-width: 46ch;
+      line-height: 1.55;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 820px) {
+      .hero p.sub {
+        font-size: 17px;
+      }
+    }
+
+    .hero .ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-proof {
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-phone {
+      position: relative;
+      width: min(330px, 86vw);
+      aspect-ratio: 9 / 19.5;
+      filter:
+        drop-shadow(0 26px 60px rgba(0, 0, 0, 0.55)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.3));
+      /* Same GPU-promotion fix as .phone */
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .hero-phone::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("assets/iphone-frame.svg") center / contain no-repeat;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-phone>img,
+    .hero-phone>video {
+      position: absolute;
+      top: 1.41%;
+      left: 3.06%;
+      width: 93.89%;
+      height: 97.18%;
+      border-radius: 11.54% / 5.15%;
+      object-fit: cover;
+      display: block;
+      background: #000;
+      z-index: 1;
+    }
+
+    .beta-brief {
+      padding: 28px 0;
+      background: var(--ink-rise);
+      border-top: 1px solid var(--ink-rule);
+      border-bottom: 1px solid var(--ink-rule);
+    }
+
+    .brief-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+    }
+
+    .brief-item {
+      padding: 0;
+    }
+
+    .brief-item strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .brief-item span {
+      display: block;
+      color: var(--fg-on-dark-soft);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 780px) {
+      .brief-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== IMPRINT — first import wow ===== */
+    .imprint {
+      padding: 88px 0;
+      background: var(--ink-rise);
+      border-top: 1px solid var(--ink-rule);
+      border-bottom: 1px solid var(--ink-rule);
+    }
+
+    .imprint-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .imprint-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .imprint {
+        padding: 64px 0;
+      }
+    }
+
+    .imprint-text h2 {
+      font-size: 38px;
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 820px) {
+      .imprint-text h2 {
+        font-size: 28px;
+      }
+    }
+
+    .imprint-text p {
+      font-size: 16px;
+      color: var(--fg-on-dark-soft);
+      line-height: 1.65;
+      max-width: 42ch;
+    }
+
+    .imprint-visual {
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 14px;
+      border: 1px solid transparent;
+      transition: opacity 0.2s, background 0.2s, transform 0.08s;
+      cursor: pointer;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--ink);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn-ghost-dark {
+      background: transparent;
+      color: var(--fg-on-dark);
+      border-color: var(--ink-rule);
+    }
+
+    .btn-ghost-dark:hover {
+      background: var(--ink-soft);
+    }
+
+    /* ===== SECTION HEAD ===== */
+    .sec-head {
+      margin-bottom: 48px;
+      max-width: 720px;
+    }
+
+    .sec-head h2 {
+      font-size: 42px;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 820px) {
+      .sec-head h2 {
+        font-size: 30px;
+      }
+    }
+
+    .sec-head p {
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--fg-on-light-soft);
+    }
+
+    section.dark .sec-head p {
+      color: var(--fg-on-dark-soft);
+    }
+
+    .sec-head p a {
+      color: var(--fg-on-dark);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: color 0.2s;
+    }
+
+    .sec-head p a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== FEATURE ROW ===== */
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .row.reverse .text {
+      order: 2;
+    }
+
+    @media (max-width: 880px) {
+      .row {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .row.reverse .text {
+        order: 0;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+    }
+
+    .row .text h2 {
+      font-size: 38px;
+      line-height: 1.18;
+      margin-bottom: 18px;
+      max-width: 16ch;
+    }
+
+    @media (max-width: 820px) {
+      .row .text h2 {
+        font-size: 29px;
+      }
+    }
+
+    .row .text p {
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--fg-on-light-soft);
+      max-width: 42ch;
+    }
+
+    section.dark .row .text p {
+      color: var(--fg-on-dark-soft);
+    }
+
+    /* ===== VISUAL TAG ===== */
+    .visual {
+      position: relative;
+    }
+
+    .visual-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--fg-on-light-muted);
+      margin-bottom: 14px;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      text-transform: uppercase;
+    }
+
+    section.dark .visual-tag {
+      color: var(--fg-on-dark-muted);
+    }
+
+    .visual-tag::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.5;
+    }
+
+    .visual-tag.animated::before {
+      background: var(--accent);
+      opacity: 1;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.4);
+        opacity: 0.5;
+      }
+    }
+
+    /* Phone frame — iPhone 16 Pro SVG overlay */
+    .phone {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 9 / 19.5;
+      filter:
+        drop-shadow(0 18px 36px rgba(0, 0, 0, 0.22)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.14));
+      /* Force GPU compositing from initial paint —
+         mobile Safari otherwise rasterizes drop-shadow on CPU first,
+         producing aliased corners until a scroll triggers re-render. */
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .phone::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("assets/iphone-frame.svg") center / contain no-repeat;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .phone>img,
+    .phone>video {
+      position: absolute;
+      top: 1.41%;
+      left: 3.06%;
+      width: 93.89%;
+      height: 97.18%;
+      border-radius: 11.54% / 5.15%;
+      object-fit: cover;
+      display: block;
+      background: #000;
+      z-index: 1;
+    }
+
+    section.dark .phone {
+      filter:
+        drop-shadow(0 22px 50px rgba(0, 0, 0, 0.55)) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.3));
+    }
+
+    .phone-multi {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .phone-multi .phone {
+      flex: 1 1 0;
+      max-width: none;
+    }
+
+    @media (max-width: 880px) {
+      .phone-multi {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .phone-multi .phone {
+        max-width: 240px;
+        flex-basis: 45%;
+      }
+    }
+
+    /* Share-card visuals */
+    .share-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 880px) {
+      .share-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .share-card {
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      background: var(--ink-soft);
+      border: 1px solid var(--ink-rule);
+      color: var(--fg-on-dark-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 11px;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      text-align: center;
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .share-card:has(img) {
+      aspect-ratio: auto;
+      padding: 0;
+    }
+
+    .share-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .share-card.highlight {
+      border-color: color-mix(in srgb, var(--accent) 40%, var(--ink-rule));
+    }
+
+    .share-card .label {
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      font-size: 10px;
+    }
+
+    .share-card .name {
+      font-size: 12px;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--fg-on-dark);
+    }
+
+    /* ===== STATS — FULL BLEED ===== */
+    .stats {
+      padding: 124px 0 0;
+    }
+
+    .stats .container {
+      max-width: 880px;
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .stats h2 {
+      font-size: 56px;
+      line-height: 1.1;
+      margin-bottom: 22px;
+      letter-spacing: 0;
+    }
+
+    @media (max-width: 820px) {
+      .stats h2 {
+        font-size: 36px;
+      }
+    }
+
+    .stats p.sub {
+      font-size: 18px;
+      color: var(--fg-on-dark-soft);
+      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 50ch;
+    }
+
+    .stats .axes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .stats .axis-chip {
+      font-size: 13px;
+      padding: 7px 14px;
+      border: 1px solid var(--ink-rule);
+      border-radius: 999px;
+      color: var(--fg-on-dark-soft);
+      font-weight: 500;
+    }
+
+    .stats .axis-chip strong {
+      color: var(--accent);
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    .stats .stage {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 var(--gutter) 124px;
+    }
+
+    .stats .stage .visual-tag {
+      justify-content: center;
+      display: flex;
+      margin-bottom: 28px;
+    }
+
+    .stats .stage .phone-multi {
+      gap: 22px;
+      justify-content: center;
+    }
+
+    .stats .stage .phone-multi .phone {
+      max-width: 320px;
+    }
+
+    /* ===== GOALS — full-bleed ===== */
+    .goals {
+      padding: 124px 0 0;
+      background: var(--ink-rise);
+      border-top: 1px solid var(--ink-rule);
+    }
+
+    .goals .container {
+      max-width: 880px;
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .goals h2 {
+      font-size: 56px;
+      line-height: 1.1;
+      margin-bottom: 22px;
+      letter-spacing: 0;
+    }
+
+    @media (max-width: 820px) {
+      .goals h2 {
+        font-size: 36px;
+      }
+    }
+
+    .goals p.sub {
+      font-size: 18px;
+      color: var(--fg-on-dark-soft);
+      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 50ch;
+    }
+
+    .goals .stage {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 var(--gutter) 124px;
+    }
+
+    .goals .stage .visual-tag {
+      justify-content: center;
+      display: flex;
+      margin-bottom: 28px;
+    }
+
+    .goals .stage .phone-multi {
+      justify-content: center;
+    }
+
+    .goals .stage .phone-multi .phone {
+      flex: 0 0 auto;
+      max-width: 320px;
+      width: 100%;
+    }
+
+    /* ===== BASICS ===== */
+    .basics {
+      padding: 96px 0;
+    }
+
+    .basics h3.basics-head {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--fg-on-light);
+      margin: 0 0 36px;
+    }
+
+    .basics-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1000px) {
+      .basics-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .basics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .basics-item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .basics-item .phone {
+      max-width: none;
+      width: 100%;
+    }
+
+    .basics-label {
+      font-size: 13px;
+      color: var(--fg-on-light-soft);
+      text-align: center;
+    }
+
+    .basics-foot {
+      margin-top: 28px;
+      font-size: 13px;
+      color: var(--fg-on-light-muted);
+    }
+
+    /* ===== BETA / FEEDBACK / PRIVACY ===== */
+    .twocol {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    @media (max-width: 760px) {
+      .twocol {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .list-tight {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list-tight li {
+      padding: 11px 0;
+      border-top: 1px solid var(--ink-rule);
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--fg-on-dark-soft);
+    }
+
+    .list-tight li:last-child {
+      border-bottom: 1px solid var(--ink-rule);
+    }
+
+    .list-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--fg-on-dark);
+    }
+
+    .channels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    @media (max-width: 760px) {
+      .channels {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .channel {
+      padding: 0;
+    }
+
+    .channel h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .channel p,
+    .channel a,
+    .channel span {
+      font-size: 14px;
+      color: var(--fg-on-light-soft);
+      line-height: 1.55;
+    }
+
+    .channel p {
+      margin-bottom: 12px;
+    }
+
+    .channel a {
+      color: var(--fg-on-light);
+      font-weight: 500;
+      border-bottom: 1px solid currentColor;
+    }
+
+    .privacy-text p {
+      font-size: 15px;
+      color: var(--fg-on-light-soft);
+      line-height: 1.65;
+      max-width: 64ch;
+    }
+
+    .privacy-text p+p {
+      margin-top: 12px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 36px 0 56px;
+      background: var(--ink);
+      color: var(--fg-on-dark-muted);
+      font-size: 13px;
+      border-top: 1px solid var(--ink-rule);
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    footer .brand-mark img {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      opacity: 0.85;
+    }
+
+    footer .links a {
+      margin-right: 18px;
+      opacity: 0.8;
+    }
+
+    footer .links a:hover {
+      opacity: 1;
+    }
+
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .visual-tag.animated::before {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="top" id="nav">
+    <div class="inner">
+      <a class="brand" href="#top">
+        <img src="assets/app-icon.png" alt="" />
+        미리엄
+      </a>
+      <div class="links">
+        <a href="#stats">통계</a>
+        <a href="#goals">목표</a>
+        <a href="#courses">코스</a>
+        <a href="#ranking">순위</a>
+        <a href="#compare">비교</a>
+        <a href="#awards">수상</a>
+        <a href="#share">공유</a>
+      </div>
+    </div>
+  </nav>
+
+  <a id="top"></a>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero dark" data-nav="dark">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="reveal meta">
+            <img src="assets/app-icon.png" alt="미리엄 아이콘" />
+            <span>미리엄 · iOS · TestFlight 비공개 베타</span>
+          </div>
+          <h1 class="reveal">Apple Watch의 러닝 기록을 재발견하세요</h1>
+          <p class="sub reveal">
+            HealthKit의 러닝 기록을 기간·코스·거리별로 살펴보고, 트렌드와 순위, 수상 이력까지 한눈에 확인하세요. 나만의 목표를 설정하고 연속 달성을 이어가세요.
+          </p>
+          <div class="ctas reveal">
+            <!-- TODO: replace with public TestFlight invite URL -->
+            <a class="btn btn-primary" href="#beta">베타 안내 보기</a>
+            <a class="btn btn-ghost-dark" href="#stats">기능</a>
+          </div>
+        </div>
+
+        <div class="hero-proof reveal" aria-label="미리엄 Summary 화면">
+          <div class="hero-phone">
+            <img src="screenshots/hero-summary.jpg" alt="미리엄 Summary 탭 — 목표 링과 최근 활동 카드" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BETA BRIEF — trust signals right after hero ===== -->
+  <section class="beta-brief dark" data-nav="dark" aria-label="신뢰 신호">
+    <div class="container">
+      <div class="brief-grid reveal">
+        <div class="brief-item">
+          <strong>HealthKit 기반</strong>
+          <span>Apple Watch와 iPhone에 저장된 러닝 기록을 읽어옵니다.</span>
+        </div>
+        <div class="brief-item">
+          <strong>기기 안에서 분석</strong>
+          <span>건강·운동 데이터를 외부 분석 SDK나 광고 도구로 보내지 않습니다.</span>
+        </div>
+        <div class="brief-item">
+          <strong>한국어 · 영어 지원</strong>
+          <span>UI와 알림이 한국어와 영어 모두로 제공됩니다.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IMPRINT — first import wow ===== -->
+  <section class="imprint dark" data-nav="dark" aria-label="첫 임포트">
+    <div class="container">
+      <div class="imprint-grid reveal">
+        <div class="imprint-text">
+          <span class="visual-tag">임포트 직후</span>
+          <h2>그동안의 러닝이,<br />한 화면으로</h2>
+          <p>
+            HealthKit에 흩어져 있던 러닝이 미리엄을 처음 켜는 순간 모두 정렬됩니다.
+            누적 거리·시간, 벨트 등급, 개인 기록, 마일리지 달성이 한 화면에 펼쳐집니다.
+          </p>
+        </div>
+        <div class="imprint-visual">
+          <div class="phone"><img src="screenshots/awards-belt.jpg"
+              alt="수상 탭 — 누적 2,481km · 498 RUNS, 갈색띠, 개인 기록과 마일리지 달성" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 1. STATS (full-bleed) ===== -->
+  <section class="stats dark" id="stats" data-nav="dark">
+    <div class="container reveal">
+      <h2>러닝을 여러 렌즈로 다시 봅니다</h2>
+      <p class="sub">
+        기간(주 · 월 · 년 · 라이프타임), 코스, 표준 거리(1마일·5K·10K·하프·풀·100마일 등 11종)
+        등 다양한 관점에서 거리, 페이스, 심박, 고도, 케이던스의 변화를 확인할 수 있습니다.
+      </p>
+      <div class="axes">
+        <span class="axis-chip"><strong>기간</strong>주 · 월 · 년 · 라이프타임</span>
+        <span class="axis-chip"><strong>표준 거리</strong>1마일 · 5K · 5마일 · 10K · 30K · 하프 · 풀 · 50K · 50마일 · 100K ·
+          100마일</span>
+        <span class="axis-chip"><strong>코스</strong>등록한 코스별</span>
+        <span class="axis-chip"><strong>메트릭</strong>거리 · 페이스 · 심박 · 고도 · 케이던스</span>
+      </div>
+    </div>
+
+    <div class="stage reveal">
+      <span class="visual-tag">멀티샷 · 3 화면</span>
+      <div class="phone-multi">
+        <div class="phone"><img src="screenshots/stats-period.jpg" alt="2026년 기간별 추이 차트" /></div>
+        <div class="phone"><img src="screenshots/stats-distance.jpg" alt="5K 완주 기준 표준 거리별 추이" /></div>
+        <div class="phone"><img src="screenshots/stats-course.jpg" alt="밤섬 반환 코스의 페이스·심박 추이" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2. GOALS / STREAK ===== -->
+  <section class="goals dark" id="goals" data-nav="dark">
+    <div class="container reveal">
+      <h2>목표를 만들고 연속 기록을 이어가세요</h2>
+      <p class="sub">
+        주간 거리, 월간 횟수, 10K 완주 같은 목표를 만들면 기간마다 달성 여부가 기록되고, 연속 달성이 카운트됩니다.
+      </p>
+    </div>
+    <div class="stage reveal">
+      <span class="visual-tag">정적 · 1 화면</span>
+      <div class="phone-multi">
+        <div class="phone"><img src="screenshots/goals-streak.jpg" alt="매주 한 번 10km 달리기 — 17주 연속 달성" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. COURSES ===== -->
+  <section class="light" id="courses" data-nav="light">
+    <div class="container">
+      <div class="row">
+        <div class="text reveal">
+          <h2>자주 달리는 길은 코스가 됩니다</h2>
+          <p>
+            마음에 드는 코스를 등록하면, 이후 비슷한 GPS 경로의 러닝이
+            같은 코스로 자동 매칭됩니다. 한 코스의 페이스, 심박, 거리 추이를
+            따로 보고, 익숙한 길에서 몸이 어떻게 달라졌는지 비교할 수 있습니다.
+          </p>
+        </div>
+        <div class="visual reveal">
+          <span class="visual-tag">멀티샷 · 2 화면</span>
+          <div class="phone-multi">
+            <div class="phone"><img src="screenshots/courses-list.jpg" alt="등록한 코스 목록" /></div>
+            <div class="phone"><img src="screenshots/courses-detail.jpg" alt="성산교 반환 코스 세부사항" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. SESSION RANKING ===== -->
+  <section class="softlight" id="ranking" data-nav="light">
+    <div class="container">
+      <div class="row reverse">
+        <div class="text reveal">
+          <h2>원하는 조건의 베스트를 찾습니다</h2>
+          <p>
+            세션 목록을 표준 거리나 코스로 필터링하고 거리, 시간, 페이스,
+            평균 심박, 케이던스, 파워, 활동 칼로리, 고도 상승, 접지 시간 등
+            10여 가지 기준으로 정렬할 수 있습니다. 12km 러닝 안의 가장 빠른
+            10K 처럼, 표준 거리 구간 베스트도 함께 찾아냅니다.
+          </p>
+        </div>
+        <div class="visual reveal">
+          <span class="visual-tag">멀티샷 · 3 화면</span>
+          <div class="phone-multi">
+            <div class="phone"><img src="screenshots/ranking-10k-best.jpg" alt="10K 완주 — 최고 구간 기록 정렬" /></div>
+            <div class="phone"><img src="screenshots/ranking-course-hr.jpg" alt="성산교 반환 코스 — 평균 심박 정렬" /></div>
+            <div class="phone"><img src="screenshots/ranking-elevation.jpg" alt="전체 세션 — 상승 고도 정렬" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. COMPARE ===== -->
+  <section class="light" id="compare" data-nav="light">
+    <div class="container">
+      <div class="row">
+        <div class="text reveal">
+          <h2>과거의 기록과 비교하세요</h2>
+          <p>
+            한 러닝의 페이스, 심박, 고도 차트 위에 같은 코스의 과거 평균과
+            같은 표준 거리의 본인 평균이 함께 표시됩니다. 이번 러닝이 평소보다
+            빨랐는지 느렸는지가 한눈에 보입니다.
+          </p>
+        </div>
+        <div class="visual reveal">
+          <span class="visual-tag">멀티샷 · 2 화면</span>
+          <div class="phone-multi">
+            <div class="phone"><img src="screenshots/compare-1.jpg" alt="러닝 상세 — 수상 finish 10K 와 세부사항" /></div>
+            <div class="phone"><img src="screenshots/compare-2.jpg" alt="비교 시트 — 1개월·동일 코스 4개 세션 대비 변화" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. AWARDS ===== -->
+  <section class="softlight" id="awards" data-nav="light">
+    <div class="container">
+      <div class="row">
+        <div class="text reveal">
+          <h2>모든 기록은 한곳에,<br />누적거리는 벨트로</h2>
+          <p>
+            개인 기록, 목표 연속 달성, 마일리지, 연간 메달을 한눈에 확인하세요. 누적 거리는 흰띠부터 파란띠·보라띠를 거쳐 검은띠·빨간띠까지, 벨트 등급으로 장기적인 러닝 여정을 보여줍니다.
+          </p>
+        </div>
+        <div class="visual reveal">
+          <span class="visual-tag">멀티샷 · 2 화면</span>
+          <div class="phone-multi">
+            <div class="phone"><img src="screenshots/awards-belt.jpg" alt="갈색띠 — 개인 기록과 목표 연속 달성" /></div>
+            <div class="phone"><img src="screenshots/awards-records.jpg" alt="마일리지 달성과 연간 메달" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. SHARE CARDS ===== -->
+  <section class="dark" id="share" data-nav="dark">
+    <div class="container">
+      <div class="sec-head reveal">
+        <h2>공유 카드를 친구에게 보내세요</h2>
+        <p>
+          공유 카드는 두 갈래입니다. 한 건의 러닝을 지도와 배지로 정리한
+          세션 카드, 그리고 하루 · 주간 · 월간 · 연간 · 라이프타임을 요약한
+          기간 카드입니다. 메시지, SNS, 사진 앱으로 바로 보낼 수 있습니다.
+        </p>
+      </div>
+      <div class="reveal">
+        <span class="visual-tag">카드 그리드 · 4 종류</span>
+        <div class="share-grid">
+          <div class="share-card highlight"><img src="screenshots/share-session.jpg" alt="세션 카드 — 10K 한강 코스 지도" /></div>
+          <div class="share-card"><img src="screenshots/share-weekly.jpg" alt="주간 카드 — 5월 18일~24일, 22km · 4 runs" />
+          </div>
+          <div class="share-card"><img src="screenshots/share-monthly.jpg" alt="월간 카드 — 4월, 171km · 22 runs" /></div>
+          <div class="share-card"><img src="screenshots/share-lifetime.jpg" alt="라이프타임 카드 — 2,481km · 498 runs" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BASICS ===== -->
+  <section class="basics softlight" data-nav="light">
+    <div class="container reveal">
+      <h3 class="basics-head">기본 기능</h3>
+      <div class="basics-grid">
+        <div class="basics-item">
+          <div class="phone"><img src="screenshots/basics-detail.jpg" alt="러닝 상세 차트" /></div>
+          <span class="basics-label">러닝 상세 차트</span>
+        </div>
+        <div class="basics-item">
+          <div class="phone"><img src="screenshots/basics-segments.jpg" alt="km 단위 구간 분석" /></div>
+          <span class="basics-label">구간 분석</span>
+        </div>
+        <div class="basics-item">
+          <div class="phone"><img src="screenshots/basics-hr-zones.jpg" alt="심박 영역" /></div>
+          <span class="basics-label">심박존</span>
+        </div>
+        <div class="basics-item">
+          <div class="phone"><img src="screenshots/basics-darklight.jpg" alt="다크 / 라이트 모드" /></div>
+          <span class="basics-label">다크 / 라이트 모드</span>
+        </div>
+      </div>
+      <p class="basics-foot">알림 · 한국어 · 영어</p>
+    </div>
+  </section>
+
+  <!-- ===== BETA (remove section on public release) ===== -->
+  <section class="dark" id="beta" data-nav="dark">
+    <div class="container">
+      <div class="sec-head reveal">
+        <h2>TestFlight 베타</h2>
+        <p>
+          초청 받으신 분은 App Store에서 Apple의
+          <a href="https://apps.apple.com/app/testflight/id899247664">TestFlight 앱</a>을
+          먼저 설치한 뒤 미리엄을 선택해 사용할 수 있습니다.
+          정식 출시 전 단계라 일부 기능이 변경될 수 있습니다.
+        </p>
+      </div>
+
+      <div class="twocol reveal">
+        <div>
+          <div class="list-title">확인 항목</div>
+          <ul class="list-tight">
+            <li>거슬리거나 누락된 UI가 없는가</li>
+            <li>목표 스트릭이 직관적으로 읽히는가</li>
+            <li>요약 카드의 정보가 직관적으로 읽히는가</li>
+            <li>러닝 추가 직후 알림 타이밍이 적절한가</li>
+            <li>오래된 러닝(수년 전)이 전부 임포트되는가</li>
+            <li>세션 순위 필터·정렬 결과가 정확한가</li>
+            <li>공유 카드 이미지 품질과 정보 배치</li>
+            <li>다크 / 라이트 모드에서 어색한 부분</li>
+          </ul>
+        </div>
+        <div>
+          <div class="list-title">현재 제약</div>
+          <ul class="list-tight">
+            <li>실내 러닝은 GPS·위치가 없어 지도 표시 불가</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEEDBACK ===== -->
+  <section class="light" id="feedback" data-nav="light">
+    <div class="container">
+      <div class="sec-head reveal">
+        <h2>피드백</h2>
+        <p>다음 세 채널이 있습니다. 편한 곳으로 보내주시면 됩니다.</p>
+      </div>
+
+      <div class="channels reveal">
+        <div class="channel">
+          <h3>TestFlight 내 피드백</h3>
+          <p>
+            스크린샷에 직접 표시하고 코멘트를 남길 수 있습니다. 디바이스 정보가
+            자동으로 함께 전달됩니다.
+          </p>
+          <span>TestFlight 앱 → 미리엄 → 피드백 보내기</span>
+        </div>
+        <div class="channel">
+          <h3>GitHub Issues</h3>
+          <p>버그 제보와 기능 제안. 다른 사용자도 같은 문제를 검색할 수 있습니다.</p>
+          <!-- TODO: replace with actual repo URL -->
+          <a href="https://github.com/9beach/miriam-app/issues">github.com/9beach/miriam-app/issues</a>
+        </div>
+        <div class="channel">
+          <h3>GitHub Discussions</h3>
+          <p>사용 후기, 자유 의견.</p>
+          <!-- TODO: enable Discussions tab, confirm URL -->
+          <a href="https://github.com/9beach/miriam-app/discussions">github.com/9beach/miriam-app/discussions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRIVACY ===== -->
+  <section class="softlight" id="privacy" data-nav="light">
+    <div class="container">
+      <div class="sec-head reveal" style="margin-bottom: 24px;">
+        <h2>개인정보</h2>
+      </div>
+      <div class="privacy-text reveal">
+        <p>
+          미리엄은 사용자의 건강·운동 데이터를 외부로 전송하지 않습니다.
+          러닝 기록은 HealthKit 에서 읽어 디바이스 내부에만 저장됩니다.
+          분석 SDK, 광고 SDK, 사용자 추적 도구를 사용하지 않습니다.
+        </p>
+        <p>
+          외부 통신은 코스 지도 타일(Apple Maps)과 주소 표기를 위한
+          역지오코딩에 한정되며, Apple 의 표준 API 를 통해 처리됩니다.
+        </p>
+        <!-- TODO: add link to /privacy.html once it exists -->
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="brand-mark">
+        <img src="assets/app-icon.png" alt="" />
+        <span>© <span id="year">2026</span> 9beach · 미리엄</span>
+      </div>
+      <div class="links">
+        <a href="https://github.com/9beach/miriam-app">GitHub</a>
+        <a href="#privacy">개인정보</a>
+        <a href="#feedback">피드백</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.05 },
+    );
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+    const nav = document.getElementById("nav");
+    const sections = Array.from(document.querySelectorAll("section[data-nav]"));
+    function updateNav() {
+      const y = window.scrollY + 80;
+      let current = sections[0];
+      for (const s of sections) {
+        if (s.offsetTop <= y) current = s;
+      }
+      if (current && current.dataset.nav === "light") {
+        nav.classList.add("on-light");
+      } else {
+        nav.classList.remove("on-light");
+      }
+    }
+    window.addEventListener("scroll", updateNav, { passive: true });
+    updateNav();
+  </script>
+</body>
+
+</html>
