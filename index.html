@@ -125,9 +125,54 @@
       opacity: 1;
     }
 
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 18px;
+      padding: 3px;
+      border: 1px solid var(--ink-rule);
+      border-radius: 999px;
+    }
+
+    nav.top.on-light .lang-switch {
+      border-color: var(--paper-rule);
+    }
+
+    .lang-switch button {
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--fg-on-dark-muted);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      padding: 7px 9px;
+      cursor: pointer;
+    }
+
+    nav.top.on-light .lang-switch button {
+      color: var(--fg-on-light-muted);
+    }
+
+    .lang-switch button.active {
+      background: var(--fg-on-dark);
+      color: var(--ink);
+    }
+
+    nav.top.on-light .lang-switch button.active {
+      background: var(--fg-on-light);
+      color: var(--paper);
+    }
+
     @media (max-width: 820px) {
       nav.top .links {
         display: none;
+      }
+
+      .lang-switch {
+        margin-left: 0;
       }
     }
 
@@ -397,6 +442,16 @@
 
     .btn-ghost-dark:hover {
       background: var(--ink-soft);
+    }
+
+    .btn-ghost-light {
+      background: transparent;
+      color: var(--fg-on-light);
+      border-color: var(--paper-rule);
+    }
+
+    .btn-ghost-light:hover {
+      background: var(--paper-soft);
     }
 
     /* ===== SECTION HEAD ===== */
@@ -1031,7 +1086,13 @@
         <a href="#ranking">순위</a>
         <a href="#compare">비교</a>
         <a href="#awards">수상</a>
+        <a href="awards.html">배지</a>
         <a href="#share">공유</a>
+      </div>
+      <div class="lang-switch" aria-label="Language">
+        <button type="button" data-lang-option="ko">KO</button>
+        <button type="button" data-lang-option="en">EN</button>
+        <button type="button" data-lang-option="ja">JA</button>
       </div>
     </div>
   </nav>
@@ -1080,8 +1141,8 @@
           <span>건강·운동 데이터를 외부 분석 SDK나 광고 도구로 보내지 않습니다.</span>
         </div>
         <div class="brief-item">
-          <strong>한국어 · 영어 지원</strong>
-          <span>UI와 알림이 한국어와 영어 모두로 제공됩니다.</span>
+          <strong>한국어 · 영어 · 일본어 지원</strong>
+          <span>UI와 알림이 한국어, 영어, 일본어로 제공됩니다.</span>
         </div>
       </div>
     </div>
@@ -1230,6 +1291,9 @@
           <p>
             개인 기록, 목표 연속 달성, 마일리지, 연간 메달을 한눈에 확인하세요. 누적 거리는 흰띠부터 파란띠·보라띠를 거쳐 검은띠·빨간띠까지, 벨트 등급으로 장기적인 러닝 여정을 보여줍니다.
           </p>
+          <div style="margin-top: 24px;">
+            <a class="btn btn-ghost-light" href="awards.html">전체 배지와 거리 벨트 보기</a>
+          </div>
         </div>
         <div class="visual reveal">
           <span class="visual-tag">멀티샷 · 2 화면</span>
@@ -1288,7 +1352,7 @@
           <span class="basics-label">다크 / 라이트 모드</span>
         </div>
       </div>
-      <p class="basics-foot">알림 · 한국어 · 영어</p>
+      <p class="basics-foot">알림 · 한국어 · 영어 · 일본어</p>
     </div>
   </section>
 
@@ -1425,6 +1489,7 @@
       </div>
       <div class="links">
         <a href="https://github.com/ninehobbes/miriam-app">GitHub</a>
+        <a href="awards.html">배지</a>
         <a href="#privacy">개인정보</a>
         <a href="#feedback">피드백</a>
       </div>
@@ -1464,6 +1529,126 @@
     window.addEventListener("scroll", updateNav, { passive: true });
     updateNav();
   </script>
+  <script>
+    window.MIRIAM_I18N = {
+      meta: {
+        ko: {
+          title: "미리엄 — Apple Watch의 러닝 기록을 재발견하세요",
+          description: "HealthKit의 러닝 기록을 기간·코스·거리별로 살펴보고, 트렌드와 순위, 수상 이력까지 한눈에 확인하세요. 나만의 목표를 설정하고 연속 달성을 이어가세요."
+        },
+        en: {
+          title: "Miriam - Rediscover your Apple Watch running history",
+          description: "Explore HealthKit running data by period, course, and distance. See trends, rankings, awards, goals, and streaks in one place."
+        },
+        ja: {
+          title: "Miriam - Apple Watchのランニング記録を再発見",
+          description: "HealthKitのランニング記録を期間・コース・距離別に確認し、トレンド、ランキング、受賞履歴、目標、連続達成をひと目で把握できます。"
+        }
+      },
+      text: {
+        "미리엄": { en: "Miriam", ja: "Miriam" },
+        "통계": { en: "Stats", ja: "統計" },
+        "목표": { en: "Goals", ja: "目標" },
+        "코스": { en: "Courses", ja: "コース" },
+        "순위": { en: "Rankings", ja: "ランキング" },
+        "비교": { en: "Compare", ja: "比較" },
+        "수상": { en: "Awards", ja: "受賞" },
+        "배지": { en: "Badges", ja: "バッジ" },
+        "공유": { en: "Share", ja: "共有" },
+        "개인정보": { en: "Privacy", ja: "プライバシー" },
+        "피드백": { en: "Feedback", ja: "フィードバック" },
+        "미리엄 · iOS · TestFlight 비공개 베타": { en: "Miriam · iOS · Private TestFlight beta", ja: "Miriam · iOS · TestFlight非公開ベータ" },
+        "Apple Watch의 러닝 기록을 재발견하세요": { en: "Rediscover your Apple Watch running history", ja: "Apple Watchのランニング記録を再発見" },
+        "HealthKit의 러닝 기록을 기간·코스·거리별로 살펴보고, 트렌드와 순위, 수상 이력까지 한눈에 확인하세요. 나만의 목표를 설정하고 연속 달성을 이어가세요.": { en: "Explore HealthKit running data by period, course, and distance. See trends, rankings, awards, goals, and streaks in one place.", ja: "HealthKitのランニング記録を期間・コース・距離別に確認し、トレンド、ランキング、受賞履歴までひと目で把握できます。自分の目標を設定し、連続達成を続けましょう。" },
+        "베타 안내 보기": { en: "Beta Info", ja: "ベータ案内" },
+        "기능": { en: "Features", ja: "機能" },
+        "HealthKit 기반": { en: "HealthKit-based", ja: "HealthKitベース" },
+        "Apple Watch와 iPhone에 저장된 러닝 기록을 읽어옵니다.": { en: "Reads running records stored on Apple Watch and iPhone.", ja: "Apple WatchとiPhoneに保存されたランニング記録を読み込みます。" },
+        "기기 안에서 분석": { en: "Analyzed on device", ja: "デバイス内で分析" },
+        "건강·운동 데이터를 외부 분석 SDK나 광고 도구로 보내지 않습니다.": { en: "Health and workout data is not sent to analytics SDKs or ad tools.", ja: "健康・ワークアウトデータを外部分析SDKや広告ツールへ送信しません。" },
+        "한국어 · 영어 · 일본어 지원": { en: "Korean · English · Japanese", ja: "韓国語・英語・日本語対応" },
+        "UI와 알림이 한국어, 영어, 일본어로 제공됩니다.": { en: "The UI and notifications are available in Korean, English, and Japanese.", ja: "UIと通知は韓国語、英語、日本語で提供されます。" },
+        "임포트 직후": { en: "After Import", ja: "インポート直後" },
+        "그동안의 러닝이,": { en: "All your past runs,", ja: "これまでのランが、" },
+        "한 화면으로": { en: "on one screen", ja: "ひとつの画面に" },
+        "HealthKit에 흩어져 있던 러닝이 미리엄을 처음 켜는 순간 모두 정렬됩니다. 누적 거리·시간, 벨트 등급, 개인 기록, 마일리지 달성이 한 화면에 펼쳐집니다.": { en: "When you open Miriam for the first time, your HealthKit running history is organized automatically. Total distance, time, belt grade, personal records, and mileage achievements appear on one screen.", ja: "Miriamを初めて開くと、HealthKitに保存されたランニング記録が自動で整理されます。累積距離・時間、ベルト等級、自己記録、マイレージ達成がひとつの画面に表示されます。" },
+        "러닝을 여러 렌즈로 다시 봅니다": { en: "View running through multiple lenses", ja: "ランニングを複数の視点で見る" },
+        "기간(주 · 월 · 년 · 라이프타임), 코스, 표준 거리(1마일·5K·10K·하프·풀·100마일 등 11종) 등 다양한 관점에서 거리, 페이스, 심박, 고도, 케이던스의 변화를 확인할 수 있습니다.": { en: "Track distance, pace, heart rate, elevation, and cadence by period, course, and 11 standard distances including 1 mile, 5K, 10K, half, full, and 100 miles.", ja: "週・月・年・ライフタイム、コース、1マイル・5K・10K・ハーフ・フル・100マイルなど11種類の標準距離で、距離、ペース、心拍、高度、ケイデンスの変化を確認できます。" },
+        "기간": { en: "Period", ja: "期間" },
+        "주 · 월 · 년 · 라이프타임": { en: "Week · Month · Year · Lifetime", ja: "週 · 月 · 年 · ライフタイム" },
+        "표준 거리": { en: "Standard Distance", ja: "標準距離" },
+        "1마일 · 5K · 5마일 · 10K · 30K · 하프 · 풀 · 50K · 50마일 · 100K · 100마일": { en: "1 mile · 5K · 5 miles · 10K · 30K · Half · Full · 50K · 50 miles · 100K · 100 miles", ja: "1マイル · 5K · 5マイル · 10K · 30K · ハーフ · フル · 50K · 50マイル · 100K · 100マイル" },
+        "등록한 코스별": { en: "Registered courses", ja: "登録したコース別" },
+        "메트릭": { en: "Metrics", ja: "指標" },
+        "거리 · 페이스 · 심박 · 고도 · 케이던스": { en: "Distance · Pace · Heart Rate · Elevation · Cadence", ja: "距離 · ペース · 心拍 · 高度 · ケイデンス" },
+        "멀티샷 · 3 화면": { en: "Multi-shot · 3 screens", ja: "マルチショット · 3画面" },
+        "목표를 만들고 연속 기록을 이어가세요": { en: "Set goals and keep streaks going", ja: "目標を作り、連続記録を続ける" },
+        "주간 거리, 월간 횟수, 10K 완주 같은 목표를 만들면 기간마다 달성 여부가 기록되고, 연속 달성이 카운트됩니다.": { en: "Create goals such as weekly distance, monthly run count, or 10K finishes. Miriam records whether each period was completed and counts streaks.", ja: "週間距離、月間回数、10K完走などの目標を作ると、各期間の達成状況が記録され、連続達成がカウントされます。" },
+        "정적 · 1 화면": { en: "Static · 1 screen", ja: "静止 · 1画面" },
+        "자주 달리는 길은 코스가 됩니다": { en: "Frequent routes become courses", ja: "よく走る道がコースになります" },
+        "마음에 드는 코스를 등록하면, 이후 비슷한 GPS 경로의 러닝이 같은 코스로 자동 매칭됩니다. 한 코스의 페이스, 심박, 거리 추이를 따로 보고, 익숙한 길에서 몸이 어떻게 달라졌는지 비교할 수 있습니다.": { en: "Register a route you like, and future runs with similar GPS paths are matched to the same course. Review pace, heart rate, and distance trends for each course.", ja: "気に入ったコースを登録すると、その後の似たGPS経路のランが同じコースに自動でマッチされます。コースごとのペース、心拍、距離の推移を確認できます。" },
+        "멀티샷 · 2 화면": { en: "Multi-shot · 2 screens", ja: "マルチショット · 2画面" },
+        "원하는 조건의 베스트를 찾습니다": { en: "Find your best runs by condition", ja: "条件に合うベストを探す" },
+        "세션 목록을 표준 거리나 코스로 필터링하고 거리, 시간, 페이스, 평균 심박, 케이던스, 파워, 활동 칼로리, 고도 상승, 접지 시간 등 10여 가지 기준으로 정렬할 수 있습니다. 12km 러닝 안의 가장 빠른 10K 처럼, 표준 거리 구간 베스트도 함께 찾아냅니다.": { en: "Filter sessions by standard distance or course, then sort by distance, time, pace, heart rate, cadence, power, active calories, elevation gain, ground contact time, and more. Miriam also finds the best standard-distance segment inside longer runs.", ja: "セッション一覧を標準距離やコースで絞り込み、距離、時間、ペース、平均心拍、ケイデンス、パワー、アクティブカロリー、獲得標高、接地時間などで並べ替えできます。長いランの中にある最速の標準距離区間も見つけます。" },
+        "과거의 기록과 비교하세요": { en: "Compare with past records", ja: "過去の記録と比較" },
+        "한 러닝의 페이스, 심박, 고도 차트 위에 같은 코스의 과거 평균과 같은 표준 거리의 본인 평균이 함께 표시됩니다. 이번 러닝이 평소보다 빨랐는지 느렸는지가 한눈에 보입니다.": { en: "Pace, heart rate, and elevation charts can show past averages for the same course and your own average for the same standard distance.", ja: "1回のランのペース、心拍、高度チャートに、同じコースの過去平均や同じ標準距離の自分の平均を重ねて表示できます。" },
+        "모든 기록은 한곳에,": { en: "All records in one place,", ja: "すべての記録を一か所に、" },
+        "누적거리는 벨트로": { en: "total distance as a belt", ja: "累積距離はベルトで" },
+        "개인 기록, 목표 연속 달성, 마일리지, 연간 메달을 한눈에 확인하세요. 누적 거리는 흰띠부터 파란띠·보라띠를 거쳐 검은띠·빨간띠까지, 벨트 등급으로 장기적인 러닝 여정을 보여줍니다.": { en: "View personal records, goal streaks, mileage achievements, and yearly medals in one place. Total distance is represented as a belt grade from white to blue, purple, brown, black, and red.", ja: "自己記録、目標の連続達成、マイレージ、年間メダルをひと目で確認できます。累積距離は白帯から青帯、紫帯、茶帯、黒帯、赤帯へ進むベルト等級で表示されます。" },
+        "전체 배지와 거리 벨트 보기": { en: "View All Badges and Distance Belts", ja: "すべてのバッジと距離ベルトを見る" },
+        "공유 카드를 친구에게 보내세요": { en: "Send share cards to friends", ja: "共有カードを送る" },
+        "공유 카드는 두 갈래입니다. 한 건의 러닝을 지도와 배지로 정리한 세션 카드, 그리고 하루 · 주간 · 월간 · 연간 · 라이프타임을 요약한 기간 카드입니다. 메시지, SNS, 사진 앱으로 바로 보낼 수 있습니다.": { en: "Share cards come in two types: a session card that summarizes one run with a map and badges, and period cards for day, week, month, year, and lifetime summaries.", ja: "共有カードは2種類あります。1回のランを地図とバッジでまとめるセッションカードと、日・週・月・年・ライフタイムを要約する期間カードです。" },
+        "카드 그리드 · 4 종류": { en: "Card grid · 4 types", ja: "カードグリッド · 4種類" },
+        "기본 기능": { en: "Basics", ja: "基本機能" },
+        "러닝 상세 차트": { en: "Run detail charts", ja: "ラン詳細チャート" },
+        "구간 분석": { en: "Segment analysis", ja: "区間分析" },
+        "심박존": { en: "Heart-rate zones", ja: "心拍ゾーン" },
+        "다크 / 라이트 모드": { en: "Dark / Light mode", ja: "ダーク / ライトモード" },
+        "알림 · 한국어 · 영어 · 일본어": { en: "Notifications · Korean · English · Japanese", ja: "通知 · 韓国語 · 英語 · 日本語" },
+        "TestFlight 베타": { en: "TestFlight Beta", ja: "TestFlightベータ" },
+        "초청 받으신 분은 App Store에서 Apple의": { en: "If you were invited, install Apple's", ja: "招待された方は、App StoreでAppleの" },
+        "TestFlight 앱": { en: "TestFlight app", ja: "TestFlightアプリ" },
+        "을 먼저 설치한 뒤 미리엄을 선택해 사용할 수 있습니다. 정식 출시 전 단계라 일부 기능이 변경될 수 있습니다.": { en: "from the App Store first, then choose Miriam. Some features may change before the public release.", ja: "を先にインストールし、Miriamを選択して使用できます。正式リリース前のため、一部機能は変更される場合があります。" },
+        "확인 항목": { en: "Things to check", ja: "確認項目" },
+        "목표 스트릭이 직관적으로 읽히는가": { en: "Are goal streaks easy to understand?", ja: "目標ストリークは直感的に読めるか" },
+        "배지나 공유 카드 디자인에 대안은 없는가": { en: "Are there better options for badge or share-card design?", ja: "バッジや共有カードのデザインに改善案はあるか" },
+        "거슬리거나 누락된 UI가 없는가": { en: "Is any UI missing or distracting?", ja: "気になるUIや不足しているUIはないか" },
+        "러닝 추가 직후 알림 타이밍이 적절한가": { en: "Are notifications timed well after a run is added?", ja: "ラン追加直後の通知タイミングは適切か" },
+        "가민, 나이키 등 서드파트 러닝 정보가 애플 피트니스에 비해 부실한 것은 없는가": { en: "Is third-party run data such as Garmin or Nike missing details compared with Apple Fitness?", ja: "GarminやNikeなどのサードパーティーラン情報がApple Fitnessに比べて不足していないか" },
+        "다크 / 라이트 모드에서 어색한 부분은 없는가": { en: "Does anything feel off in dark or light mode?", ja: "ダーク / ライトモードで違和感はないか" },
+        "현재 제약": { en: "Current limitations", ja: "現在の制約" },
+        "실내 러닝은 GPS·위치가 없어 지도 표시 불가": { en: "Indoor runs cannot show maps because GPS and location data are unavailable.", ja: "屋内ランはGPS・位置情報がないため、地図表示はできません。" },
+        "다음 세 채널이 있습니다. 편한 곳으로 보내주시면 됩니다.": { en: "You can send feedback through any of these three channels.", ja: "次の3つのチャンネルから送信できます。" },
+        "TestFlight 내 피드백": { en: "Feedback in TestFlight", ja: "TestFlight内フィードバック" },
+        "스크린샷에 직접 표시하고 코멘트를 남길 수 있습니다. 디바이스 정보가 자동으로 함께 전달됩니다.": { en: "You can annotate screenshots and leave comments. Device information is included automatically.", ja: "スクリーンショットに直接書き込み、コメントを残せます。デバイス情報も自動で送信されます。" },
+        "TestFlight 앱 → 미리엄 → 피드백 보내기": { en: "TestFlight app -> Miriam -> Send Feedback", ja: "TestFlightアプリ → Miriam → フィードバックを送信" },
+        "버그 제보와 기능 제안. 다른 사용자도 같은 문제를 검색할 수 있습니다.": { en: "Bug reports and feature requests. Other users can search for the same issue.", ja: "バグ報告と機能提案。他のユーザーも同じ問題を検索できます。" },
+        "사용 후기, 자유 의견.": { en: "General impressions and open comments.", ja: "使用感や自由な意見。" },
+        "미리엄은 사용자의 건강·운동 데이터를 외부 서버로 전송하지 않습니다. 러닝 기록은 HealthKit 에서 읽어 디바이스 내부에만 저장되며, 분석 SDK, 광고 SDK, 사용자 추적 도구를 일체 사용하지 않습니다.": { en: "Miriam does not send health or workout data to external servers. Running records are read from HealthKit and stored only on the device. Miriam does not use analytics SDKs, ad SDKs, or user tracking tools.", ja: "Miriamはユーザーの健康・ワークアウトデータを外部サーバーへ送信しません。ランニング記録はHealthKitから読み込み、デバイス内にのみ保存されます。分析SDK、広告SDK、ユーザー追跡ツールは使用しません。" },
+        "HealthKit 데이터 처리.": { en: "HealthKit data handling.", ja: "HealthKitデータの取り扱い。" },
+        "HealthKit 에서 읽은 워크아웃·심박·경로 등 건강 정보는 광고 목적으로 사용하지 않으며, 제3자에게 판매하거나 공유하지 않습니다. 외부 분석 서비스로 전송하지 않고, 오직 사용자 본인의 기록을 정리·시각화하기 위한 용도로만 디바이스 내부에서 처리됩니다.": { en: "Health information read from HealthKit, including workouts, heart rate, and routes, is not used for advertising and is not sold or shared with third parties. It is processed only on the device to organize and visualize your own records.", ja: "HealthKitから読み込んだワークアウト、心拍、経路などの健康情報は広告目的で使用せず、第三者に販売または共有しません。外部分析サービスへ送信せず、ユーザー本人の記録を整理・可視化するためにのみデバイス内で処理されます。" },
+        "iCloud 동기화 (목표·코스 한정).": { en: "iCloud sync (goals and courses only).", ja: "iCloud同期（目標・コースのみ）。" },
+        "앱을 삭제하고 재설치해도 목표와 코스 설정이 복원되도록, 이 두 가지 항목만 Apple 의 iCloud Key-Value Store 에 저장합니다. 러닝 기록, 심박, 경로 등 HealthKit 데이터는 iCloud 에 올리지 않습니다. iCloud 동기화는 사용자가 디바이스에서 iCloud 에 로그인된 경우에만 작동하며, 같은 Apple ID 안에서만 기기 간에 공유됩니다.": { en: "Only goals and course settings are stored in Apple's iCloud Key-Value Store so they can be restored after reinstalling the app. HealthKit data such as running records, heart rate, and routes is not uploaded to iCloud.", ja: "アプリを削除して再インストールしても目標とコース設定を復元できるよう、この2項目のみAppleのiCloud Key-Value Storeに保存します。ランニング記録、心拍、経路などのHealthKitデータはiCloudへアップロードしません。" },
+        "외부 통신.": { en: "External communication.", ja: "外部通信。" },
+        "코스 지도 타일은 Apple Maps 에서 가져옵니다. 코스 위치의 동·지명 표기를 위해 좌표를 Apple 의 역지오코딩 API 에 한 차례 보내고 그 결과를 디바이스에 캐시합니다. 두 통신 모두 Apple 의 표준 API 를 통해 처리되며, Apple 의 개인정보 처리방침이 적용됩니다.": { en: "Course map tiles are loaded from Apple Maps. Coordinates may be sent once to Apple's reverse geocoding API to label course locations, and the result is cached on the device. Apple's privacy policy applies to these Apple APIs.", ja: "コースの地図タイルはApple Mapsから取得します。コース位置の地名表示のため、座標をAppleの逆ジオコーディングAPIへ一度送信し、その結果をデバイスにキャッシュします。いずれもAppleの標準APIで処理され、Appleのプライバシーポリシーが適用されます。" },
+        "데이터 보존 및 삭제.": { en: "Data retention and deletion.", ja: "データの保存と削除。" },
+        "러닝 기록·캐시·설정은 모두 디바이스 안의 앱 영역에 저장되므로, 앱을 삭제하면 함께 사라집니다. (위 iCloud 항목에 따라 목표·코스만 iCloud 에 별도 보관되며, iCloud 설정 → 저장공간 → 미리엄에서 직접 삭제할 수 있습니다.) HealthKit 원본 데이터는 미리엄이 만들거나 수정하지 않으며, 건강 앱에서 직접 관리됩니다.": { en: "Running records, cache, and settings are stored in the app area on the device, so they are removed when the app is deleted. Goals and courses may remain in iCloud as described above and can be deleted from iCloud storage settings. Miriam does not create or modify original HealthKit data.", ja: "ランニング記録、キャッシュ、設定はすべてデバイス内のアプリ領域に保存されるため、アプリを削除すると一緒に削除されます。上記のiCloud項目に従い、目標とコースのみiCloudに保存される場合があり、iCloudのストレージ設定から削除できます。MiriamはHealthKitの元データを作成または変更しません。" },
+        "문의.": { en: "Contact.", ja: "お問い合わせ。" },
+        "개인정보 처리와 관련한 문의는": { en: "For privacy-related questions, contact us through", ja: "プライバシーに関するお問い合わせは" },
+        "또는 이메일로 보내주시면 됩니다.": { en: "or email.", ja: "またはメールでお送りください。" },
+        "최종 수정일: 2026년 5월 25일": { en: "Last updated: May 25, 2026", ja: "最終更新日: 2026年5月25日" }
+      },
+      attrs: {
+        ".hero-proof": {
+          "aria-label": { en: "Miriam Summary screen", ja: "MiriamのSummary画面" }
+        },
+        ".hero-phone img": {
+          alt: { en: "Miriam Summary tab with goal rings and recent activity cards", ja: "目標リングと最近のアクティビティカードがあるMiriamのSummaryタブ" }
+        }
+      }
+    };
+  </script>
+  <script src="assets/i18n.js"></script>
 </body>
 
 </html>

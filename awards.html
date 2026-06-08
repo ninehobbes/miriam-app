@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>미리엄 수상 기록 - 배지와 거리 벨트</title>
+  <meta name="description"
+    content="미리엄의 개인 기록 배지, 거리 완주 배지, 주간·월간 마일리지 마일스톤, 거리 벨트 시스템을 한눈에 살펴보세요." />
+
+  <meta property="og:title" content="미리엄 수상 기록 - 배지와 거리 벨트" />
+  <meta property="og:description"
+    content="개인 기록, 거리 완주, 주간·월간 마일리지, 거리 벨트까지 미리엄의 수상 시스템을 한 페이지에 정리했습니다." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/app-icon.png" />
+
+  <link rel="icon" type="image/png" href="assets/app-icon.png" />
+
+  <style>
+    :root {
+      --ink: #0a0a0a;
+      --ink-rise: #171719;
+      --ink-soft: #222225;
+      --ink-rule: #303033;
+      --paper: #ffffff;
+      --paper-soft: #f4f4f2;
+      --paper-rule: #dfdfdf;
+      --fg-on-dark: #f2f2f0;
+      --fg-on-dark-soft: #a7a7a2;
+      --fg-on-dark-muted: #74746f;
+      --fg-on-light: #111111;
+      --fg-on-light-soft: #565653;
+      --fg-on-light-muted: #85857f;
+      --accent: #a6ff00;
+      --accent-on-light: #2cb52c;
+      --max: 1180px;
+      --gutter: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+        "Apple SD Gothic Neo", "Pretendard Variable", Pretendard,
+        "Helvetica Neue", "Noto Sans KR", sans-serif;
+      background: var(--ink);
+      color: var(--fg-on-dark);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    nav.top {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      background: color-mix(in srgb, var(--ink) 76%, transparent);
+      border-bottom: 1px solid var(--ink-rule);
+    }
+
+    nav.top .inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+
+    .brand img {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+    }
+
+    nav.top .links {
+      display: flex;
+      gap: 20px;
+      color: var(--fg-on-dark-soft);
+      font-size: 14px;
+    }
+
+    nav.top .links a:hover {
+      color: var(--fg-on-dark);
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 18px;
+      padding: 3px;
+      border: 1px solid var(--ink-rule);
+      border-radius: 999px;
+    }
+
+    .lang-switch button {
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--fg-on-dark-muted);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      padding: 7px 9px;
+      cursor: pointer;
+    }
+
+    .lang-switch button.active {
+      background: var(--fg-on-dark);
+      color: var(--ink);
+    }
+
+    @media (max-width: 820px) {
+      nav.top .links {
+        display: none;
+      }
+
+      .lang-switch {
+        margin-left: 0;
+      }
+    }
+
+    section {
+      padding: 112px 0;
+    }
+
+    .dark {
+      background: var(--ink);
+      color: var(--fg-on-dark);
+    }
+
+    .rise {
+      background: var(--ink-rise);
+      color: var(--fg-on-dark);
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+      word-break: keep-all;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 600;
+      letter-spacing: 0;
+    }
+
+    .hero {
+      padding: 92px 0 84px;
+      border-bottom: 1px solid var(--ink-rule);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 0.85fr);
+      gap: 64px;
+      align-items: center;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      line-height: 1.05;
+      max-width: 13ch;
+      margin-bottom: 24px;
+    }
+
+    .hero .sub {
+      color: var(--fg-on-dark-soft);
+      font-size: 18px;
+      line-height: 1.65;
+      max-width: 48ch;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--ink);
+    }
+
+    .btn-ghost {
+      border-color: var(--ink-rule);
+      color: var(--fg-on-dark);
+    }
+
+    .phone-pair {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .phone {
+      position: relative;
+      width: min(250px, 42vw);
+      aspect-ratio: 9 / 19.5;
+      filter:
+        drop-shadow(0 24px 52px rgba(0, 0, 0, 0.56)) drop-shadow(0 7px 16px rgba(0, 0, 0, 0.34));
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .phone::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("assets/iphone-frame.svg") center / contain no-repeat;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .phone img {
+      position: absolute;
+      top: 1.41%;
+      left: 3.06%;
+      width: 93.89%;
+      height: 97.18%;
+      border-radius: 11.54% / 5.15%;
+      object-fit: cover;
+      background: #000;
+      z-index: 1;
+    }
+
+    .phone:nth-child(2) {
+      margin-top: 34px;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-head h2 {
+      font-size: 42px;
+      line-height: 1.14;
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      color: var(--fg-on-dark-soft);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 32px 26px;
+      align-items: center;
+    }
+
+    .badge-card {
+      min-width: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .badge-card img {
+      width: min(138px, 100%);
+      aspect-ratio: 1;
+      object-fit: contain;
+    }
+
+    .badge-card strong,
+    .badge-card span {
+      display: none;
+    }
+
+    .subsection {
+      margin-top: 72px;
+    }
+
+    .subsection h3 {
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    .subsection .note {
+      color: var(--fg-on-dark-soft);
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 56ch;
+      margin-bottom: 26px;
+    }
+
+    .belt-grid {
+      display: grid;
+      gap: 26px;
+    }
+
+    .belt-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 28px;
+      align-items: start;
+      padding: 24px 0;
+      border-top: 1px solid var(--ink-rule);
+    }
+
+    .belt-row:last-child {
+      border-bottom: 1px solid var(--ink-rule);
+    }
+
+    .belt-name {
+      font-weight: 600;
+      padding-top: 2px;
+    }
+
+    .belt-scale {
+      --tone: #ededed;
+      --points: 6;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(var(--points), minmax(0, 1fr));
+      column-gap: 0;
+      min-height: 52px;
+    }
+
+    .belt-scale::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: calc(50% / var(--points));
+      right: calc(50% / var(--points));
+      height: 1px;
+      background: color-mix(in srgb, var(--tone) 64%, var(--ink-rule));
+    }
+
+    .belt-scale.one::before {
+      display: none;
+    }
+
+    .belt-point {
+      position: relative;
+      min-width: 0;
+      padding-top: 24px;
+      color: var(--fg-on-dark-muted);
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .belt-point::before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 50%;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--tone);
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 4px var(--ink);
+    }
+
+    .belt-scale.white {
+      --tone: #f0eee9;
+    }
+
+    .belt-scale.blue {
+      --tone: #3f73e0;
+    }
+
+    .belt-scale.purple {
+      --tone: #8d65d0;
+    }
+
+    .belt-scale.brown {
+      --tone: #8a6551;
+    }
+
+    .belt-scale.black {
+      --tone: #d6d6d6;
+    }
+
+    .belt-scale.coral {
+      --tone: #bd2431;
+    }
+
+    .belt-scale.redwhite {
+      --tone: #f4f1eb;
+    }
+
+    .belt-scale.red {
+      --tone: #c52231;
+    }
+
+    .footnote {
+      color: var(--fg-on-dark-muted);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-top: 22px;
+    }
+
+    footer {
+      padding: 36px 0 56px;
+      background: var(--ink);
+      color: var(--fg-on-dark-muted);
+      font-size: 13px;
+      border-top: 1px solid var(--ink-rule);
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    footer .brand-mark img {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      opacity: 0.85;
+    }
+
+    footer .links {
+      display: flex;
+      gap: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .badge-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .phone-pair {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 700px) {
+      section {
+        padding: 78px 0;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .section-head h2 {
+        font-size: 30px;
+      }
+
+      .badge-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px 16px;
+      }
+
+      .badge-card img {
+        width: 100%;
+      }
+
+      .belt-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="top">
+    <div class="inner">
+      <a class="brand" href="index.html">
+        <img src="assets/app-icon.png" alt="" />
+        미리엄
+      </a>
+      <div class="links">
+        <a href="#records">개인 기록</a>
+        <a href="#mileage">마일리지</a>
+        <a href="#belts">거리 벨트</a>
+        <a href="index.html">소개</a>
+      </div>
+      <div class="lang-switch" aria-label="Language">
+        <button type="button" data-lang-option="ko">KO</button>
+        <button type="button" data-lang-option="en">EN</button>
+        <button type="button" data-lang-option="ja">JA</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero dark">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="kicker">Awards</span>
+          <h1>러닝 기록이 배지가 됩니다</h1>
+          <p class="sub">미리엄은 빠른 기록, 긴 거리, 표준 거리 완주, 주간·월간 마일리지를 각각 다른 배지로 남깁니다. 누적 거리는 거리 벨트 등급으로 표시됩니다.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#records">배지 보기</a>
+            <a class="btn btn-ghost" href="#belts">거리 벨트</a>
+          </div>
+        </div>
+        <div class="phone-pair" aria-label="미리엄 수상 탭 화면">
+          <div class="phone"><img src="screenshots/awards-belt.jpg" alt="갈색띠와 개인 기록 배지" /></div>
+          <div class="phone"><img src="screenshots/awards-records.jpg" alt="마일리지 달성과 연간 메달" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="records">
+    <div class="container">
+      <div class="section-head">
+        <h2>개인 기록 배지</h2>
+        <p>가장 빠른 표준 거리, 가장 긴 러닝, 가장 높은 상승 고도처럼 한 번의 러닝이 남긴 최고 기록을 모읍니다. 긴 세션 안의 빠른 5K나 10K 구간도 개인 기록 후보가 됩니다.</p>
+      </div>
+
+      <div class="badge-grid">
+        <article class="badge-card"><img src="assets/badges/HippieBadgeLongestRun.png" alt="Longest Run 배지" /><strong>Longest Run</strong><span>최장 거리</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeTopVert.png" alt="Top Vert 배지" /><strong>Top Vert</strong><span>최고 상승 고도</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastest1MI.png" alt="Fastest 1 Mile 배지" /><strong>Fastest 1 Mile</strong><span>1마일 최고 기록</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastest5K.png" alt="Fastest 5K 배지" /><strong>Fastest 5K</strong><span>5K 최고 기록</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastest5MI.png" alt="Fastest 5 Mile 배지" /><strong>Fastest 5 Mile</strong><span>5마일 최고 기록</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastest10K.png" alt="Fastest 10K 배지" /><strong>Fastest 10K</strong><span>10K 최고 기록</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastest10MI.png" alt="Fastest 10 Mile 배지" /><strong>Fastest 10 Mile</strong><span>10마일 최고 기록</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastestHalf.png" alt="Fastest Half Marathon 배지" /><strong>Fastest Half</strong><span>하프 최고 기록</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastest20MI.png" alt="Fastest 20 Mile 배지" /><strong>Fastest 20 Mile</strong><span>20마일 최고 기록</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastestFull.png" alt="Fastest Marathon 배지" /><strong>Fastest Full</strong><span>마라톤 최고 기록</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastest50K.png" alt="Fastest 50K 배지" /><strong>Fastest 50K</strong><span>50K 최고 기록</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastest50MI.png" alt="Fastest 50 Mile 배지" /><strong>Fastest 50 Mile</strong><span>50마일 최고 기록</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastest100K.png" alt="Fastest 100K 배지" /><strong>Fastest 100K</strong><span>100K 최고 기록</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastest100MI.png" alt="Fastest 100 Mile 배지" /><strong>Fastest 100 Mile</strong><span>100마일 최고 기록</span></article>
+      </div>
+
+      <div class="subsection">
+        <h3>거리 완주 배지</h3>
+        <div class="badge-grid">
+          <article class="badge-card"><img src="assets/badges/HippieBadgeFinish1MI.png" alt="Finish 1 Mile 배지" /><strong>Finish 1 Mile</strong><span>1마일 완주</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeFinish5K.png" alt="Finish 5K 배지" /><strong>Finish 5K</strong><span>5K 완주</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeFinish5MI.png" alt="Finish 5 Mile 배지" /><strong>Finish 5 Mile</strong><span>5마일 완주</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeFinish10K.png" alt="Finish 10K 배지" /><strong>Finish 10K</strong><span>10K 완주</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeFinish10MI.png" alt="Finish 10 Mile 배지" /><strong>Finish 10 Mile</strong><span>10마일 완주</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeFinishHalf.png" alt="Finish Half Marathon 배지" /><strong>Finish Half</strong><span>하프 완주</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeFinish20MI.png" alt="Finish 20 Mile 배지" /><strong>Finish 20 Mile</strong><span>20마일 완주</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeFinishFull.png" alt="Finish Marathon 배지" /><strong>Finish Full</strong><span>마라톤 완주</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeFinish50K.png" alt="Finish 50K 배지" /><strong>Finish 50K</strong><span>50K 완주</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeFinish50MI.png" alt="Finish 50 Mile 배지" /><strong>Finish 50 Mile</strong><span>50마일 완주</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeFinish100K.png" alt="Finish 100K 배지" /><strong>Finish 100K</strong><span>100K 완주</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeFinish100MI.png" alt="Finish 100 Mile 배지" /><strong>Finish 100 Mile</strong><span>100마일 완주</span></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="mileage">
+    <div class="container">
+      <div class="section-head">
+        <h2>마일리지 마일스톤</h2>
+        <p>특정 주나 월에 달성한 누적 거리는 기간 배지로 남습니다. 각 기간은 도달한 가장 높은 기준 하나로 기록됩니다.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>피크 마일리지</h3>
+        <p class="note">하루, 주, 월, 년 단위로 가장 멀리 달린 기간을 별도 배지로 보여줍니다.</p>
+        <div class="badge-grid">
+          <article class="badge-card"><img src="assets/badges/HippieBadgeDayPeak.png" alt="Peak Day 배지" /><strong>Peak Day</strong><span>하루 최고 거리</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeWeekPeak.png" alt="Peak Week 배지" /><strong>Peak Week</strong><span>주간 최고 거리</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonthPeak.png" alt="Peak Month 배지" /><strong>Peak Month</strong><span>월간 최고 거리</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeYearPeak.png" alt="Peak Year 배지" /><strong>Peak Year</strong><span>연간 최고 거리</span></article>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>주간 마일리지</h3>
+        <p class="note">한 주 동안 달린 총거리가 25K부터 300K까지의 기준에 도달하면 배지로 기록됩니다.</p>
+        <div class="badge-grid">
+          <article class="badge-card"><img src="assets/badges/HippieBadgeWeek25K.png" alt="Week 25K 배지" /><strong>Week 25K</strong><span>주간 25 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeWeek50K.png" alt="Week 50K 배지" /><strong>Week 50K</strong><span>주간 50 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeWeek75K.png" alt="Week 75K 배지" /><strong>Week 75K</strong><span>주간 75 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeWeek100K.png" alt="Week 100K 배지" /><strong>Week 100K</strong><span>주간 100 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeWeek150K.png" alt="Week 150K 배지" /><strong>Week 150K</strong><span>주간 150 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeWeek200K.png" alt="Week 200K 배지" /><strong>Week 200K</strong><span>주간 200 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeWeek250K.png" alt="Week 250K 배지" /><strong>Week 250K</strong><span>주간 250 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeWeek300K.png" alt="Week 300K 배지" /><strong>Week 300K</strong><span>주간 300 km</span></article>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>월간 마일리지</h3>
+        <p class="note">한 달 동안 달린 총거리가 50K부터 1500K까지의 기준에 도달하면 배지로 기록됩니다.</p>
+        <div class="badge-grid">
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth50K.png" alt="Month 50K 배지" /><strong>Month 50K</strong><span>월간 50 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth100K.png" alt="Month 100K 배지" /><strong>Month 100K</strong><span>월간 100 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth150K.png" alt="Month 150K 배지" /><strong>Month 150K</strong><span>월간 150 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth200K.png" alt="Month 200K 배지" /><strong>Month 200K</strong><span>월간 200 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth250K.png" alt="Month 250K 배지" /><strong>Month 250K</strong><span>월간 250 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth300K.png" alt="Month 300K 배지" /><strong>Month 300K</strong><span>월간 300 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth350K.png" alt="Month 350K 배지" /><strong>Month 350K</strong><span>월간 350 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth400K.png" alt="Month 400K 배지" /><strong>Month 400K</strong><span>월간 400 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth450K.png" alt="Month 450K 배지" /><strong>Month 450K</strong><span>월간 450 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth500K.png" alt="Month 500K 배지" /><strong>Month 500K</strong><span>월간 500 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth600K.png" alt="Month 600K 배지" /><strong>Month 600K</strong><span>월간 600 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth700K.png" alt="Month 700K 배지" /><strong>Month 700K</strong><span>월간 700 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth800K.png" alt="Month 800K 배지" /><strong>Month 800K</strong><span>월간 800 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth900K.png" alt="Month 900K 배지" /><strong>Month 900K</strong><span>월간 900 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth1000K.png" alt="Month 1000K 배지" /><strong>Month 1000K</strong><span>월간 1000 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth1100K.png" alt="Month 1100K 배지" /><strong>Month 1100K</strong><span>월간 1100 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth1200K.png" alt="Month 1200K 배지" /><strong>Month 1200K</strong><span>월간 1200 km</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeMonth1500K.png" alt="Month 1500K 배지" /><strong>Month 1500K</strong><span>월간 1500 km</span></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="belts">
+    <div class="container">
+      <div class="section-head">
+        <h2>거리 벨트</h2>
+        <p>거리 벨트는 누적 러닝 거리를 기준으로 정해집니다. 0 km에서 시작해 40,000 km까지, 현재까지 달린 총거리를 등급으로 표시합니다.</p>
+      </div>
+
+      <div class="belt-grid">
+        <div class="belt-row">
+          <div class="belt-name">흰띠</div>
+          <div class="belt-scale white" style="--points: 6;">
+            <span class="belt-point">0</span>
+            <span class="belt-point">50</span>
+            <span class="belt-point">150</span>
+            <span class="belt-point">300</span>
+            <span class="belt-point">400</span>
+            <span class="belt-point">500</span>
+          </div>
+        </div>
+        <div class="belt-row">
+          <div class="belt-name">파란띠</div>
+          <div class="belt-scale blue" style="--points: 6;">
+            <span class="belt-point">500</span>
+            <span class="belt-point">750</span>
+            <span class="belt-point">1,000</span>
+            <span class="belt-point">1,300</span>
+            <span class="belt-point">1,600</span>
+            <span class="belt-point">1,800</span>
+          </div>
+        </div>
+        <div class="belt-row">
+          <div class="belt-name">보라띠</div>
+          <div class="belt-scale purple" style="--points: 6;">
+            <span class="belt-point">1,800</span>
+            <span class="belt-point">2,500</span>
+            <span class="belt-point">3,200</span>
+            <span class="belt-point">4,000</span>
+            <span class="belt-point">4,500</span>
+            <span class="belt-point">5,000</span>
+          </div>
+        </div>
+        <div class="belt-row">
+          <div class="belt-name">갈색띠</div>
+          <div class="belt-scale brown" style="--points: 6;">
+            <span class="belt-point">5,000</span>
+            <span class="belt-point">6,000</span>
+            <span class="belt-point">7,500</span>
+            <span class="belt-point">9,000</span>
+            <span class="belt-point">9,500</span>
+            <span class="belt-point">10,000</span>
+          </div>
+        </div>
+        <div class="belt-row">
+          <div class="belt-name">검은띠</div>
+          <div class="belt-scale black" style="--points: 6;">
+            <span class="belt-point">10,000</span>
+            <span class="belt-point">12,000</span>
+            <span class="belt-point">14,000</span>
+            <span class="belt-point">17,000</span>
+            <span class="belt-point">19,000</span>
+            <span class="belt-point">20,000</span>
+          </div>
+        </div>
+        <div class="belt-row">
+          <div class="belt-name">빨검띠</div>
+          <div class="belt-scale coral" style="--points: 2;">
+            <span class="belt-point">20,000</span>
+            <span class="belt-point">30,000</span>
+          </div>
+        </div>
+        <div class="belt-row">
+          <div class="belt-name">빨흰띠</div>
+          <div class="belt-scale redwhite" style="--points: 2;">
+            <span class="belt-point">30,000</span>
+            <span class="belt-point">40,000</span>
+          </div>
+        </div>
+        <div class="belt-row">
+          <div class="belt-name">빨간띠</div>
+          <div class="belt-scale red one" style="--points: 1;">
+            <span class="belt-point">40,000</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="footnote">흰띠부터 검은띠까지는 각 띠 안에 4개의 stripe 단계가 있습니다. 검은띠 이후에는 20,000 km, 30,000 km, 40,000 km 기준만 표시합니다.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="brand-mark">
+        <img src="assets/app-icon.png" alt="" />
+        <span>© <span id="year">2026</span> ninehobbes · 미리엄</span>
+      </div>
+      <div class="links">
+        <a href="index.html">소개</a>
+        <a href="index.html#privacy">개인정보</a>
+        <a href="https://github.com/ninehobbes/miriam-app">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script>
+    window.MIRIAM_I18N = {
+      meta: {
+        ko: {
+          title: "미리엄 수상 기록 - 배지와 거리 벨트",
+          description: "미리엄의 개인 기록 배지, 거리 완주 배지, 주간·월간 마일리지 마일스톤, 거리 벨트 시스템을 한눈에 살펴보세요."
+        },
+        en: {
+          title: "Miriam Awards - Badges and Distance Belts",
+          description: "Browse Miriam's personal record badges, distance completion badges, weekly and monthly mileage milestones, and distance belt system."
+        },
+        ja: {
+          title: "Miriamの受賞記録 - バッジと距離ベルト",
+          description: "Miriamの自己記録バッジ、距離完走バッジ、週間・月間マイレージマイルストーン、距離ベルトを一覧できます。"
+        }
+      },
+      text: {
+        "미리엄": { en: "Miriam", ja: "Miriam" },
+        "개인 기록": { en: "Records", ja: "自己記録" },
+        "마일리지": { en: "Mileage", ja: "マイレージ" },
+        "거리 벨트": { en: "Distance Belts", ja: "距離ベルト" },
+        "소개": { en: "Overview", ja: "紹介" },
+        "러닝 기록이 배지가 됩니다": { en: "Running records become badges", ja: "ランニング記録がバッジになります" },
+        "미리엄은 빠른 기록, 긴 거리, 표준 거리 완주, 주간·월간 마일리지를 각각 다른 배지로 남깁니다. 누적 거리는 거리 벨트 등급으로 표시됩니다.": { en: "Miriam keeps fast times, long runs, standard distance finishes, and weekly or monthly mileage as separate badges. Total distance is shown as a distance belt grade.", ja: "Miriamは速い記録、長い距離、標準距離の完走、週間・月間マイレージをそれぞれ別のバッジとして残します。累積距離は距離ベルトの等級で表示されます。" },
+        "배지 보기": { en: "View Badges", ja: "バッジを見る" },
+        "개인 기록 배지": { en: "Personal Record Badges", ja: "自己記録バッジ" },
+        "가장 빠른 표준 거리, 가장 긴 러닝, 가장 높은 상승 고도처럼 한 번의 러닝이 남긴 최고 기록을 모읍니다. 긴 세션 안의 빠른 5K나 10K 구간도 개인 기록 후보가 됩니다.": { en: "Collect the best results from a run, such as fastest standard distance, longest run, and highest elevation gain. Fast 5K or 10K segments inside a longer session can also count as personal records.", ja: "最速の標準距離、最長ラン、最大獲得標高など、1回のランで残した最高記録をまとめます。長いセッション内の速い5Kや10K区間も自己記録の対象になります。" },
+        "거리 완주 배지": { en: "Distance Completion Badges", ja: "距離完走バッジ" },
+        "마일리지 마일스톤": { en: "Mileage Milestones", ja: "マイレージマイルストーン" },
+        "특정 주나 월에 달성한 누적 거리는 기간 배지로 남습니다. 각 기간은 도달한 가장 높은 기준 하나로 기록됩니다.": { en: "Weekly and monthly totals are saved as period badges. Each period records the highest threshold reached.", ja: "特定の週や月に達成した累積距離は期間バッジとして残ります。各期間には到達した最も高い基準が記録されます。" },
+        "피크 마일리지": { en: "Peak Mileage", ja: "ピークマイレージ" },
+        "하루, 주, 월, 년 단위로 가장 멀리 달린 기간을 별도 배지로 보여줍니다.": { en: "Shows the day, week, month, and year with the highest distance as separate badges.", ja: "日・週・月・年ごとに最も長く走った期間を別のバッジで表示します。" },
+        "주간 마일리지": { en: "Weekly Mileage", ja: "週間マイレージ" },
+        "한 주 동안 달린 총거리가 25K부터 300K까지의 기준에 도달하면 배지로 기록됩니다.": { en: "When weekly distance reaches a threshold from 25K to 300K, it is recorded as a badge.", ja: "1週間の総距離が25Kから300Kまでの基準に到達すると、バッジとして記録されます。" },
+        "월간 마일리지": { en: "Monthly Mileage", ja: "月間マイレージ" },
+        "한 달 동안 달린 총거리가 50K부터 1500K까지의 기준에 도달하면 배지로 기록됩니다.": { en: "When monthly distance reaches a threshold from 50K to 1500K, it is recorded as a badge.", ja: "1か月の総距離が50Kから1500Kまでの基準に到達すると、バッジとして記録されます。" },
+        "거리 벨트는 누적 러닝 거리를 기준으로 정해집니다. 0 km에서 시작해 40,000 km까지, 현재까지 달린 총거리를 등급으로 표시합니다.": { en: "Distance belts are based on cumulative running distance. From 0 km to 40,000 km, they show your total distance as a grade.", ja: "距離ベルトは累積ランニング距離を基準に決まります。0 kmから40,000 kmまで、これまでに走った総距離を等級として表示します。" },
+        "흰띠": { en: "White", ja: "白帯" },
+        "파란띠": { en: "Blue", ja: "青帯" },
+        "보라띠": { en: "Purple", ja: "紫帯" },
+        "갈색띠": { en: "Brown", ja: "茶帯" },
+        "검은띠": { en: "Black", ja: "黒帯" },
+        "빨검띠": { en: "Red/Black", ja: "赤黒帯" },
+        "빨흰띠": { en: "Red/White", ja: "赤白帯" },
+        "빨간띠": { en: "Red", ja: "赤帯" },
+        "흰띠부터 검은띠까지는 각 띠 안에 4개의 stripe 단계가 있습니다. 검은띠 이후에는 20,000 km, 30,000 km, 40,000 km 기준만 표시합니다.": { en: "White through black belts have four stripe stages within each belt. After black belt, only the 20,000 km, 30,000 km, and 40,000 km thresholds are shown.", ja: "白帯から黒帯までは、各帯の中に4つのstripe段階があります。黒帯以降は20,000 km、30,000 km、40,000 kmの基準のみを表示します。" },
+        "개인정보": { en: "Privacy", ja: "プライバシー" }
+      },
+      attrs: {
+        ".phone-pair": {
+          "aria-label": { en: "Miriam Awards tab screens", ja: "Miriamの受賞タブ画面" }
+        },
+        ".phone-pair .phone:nth-child(1) img": {
+          alt: { en: "Brown belt and personal record badges", ja: "茶帯と自己記録バッジ" }
+        },
+        ".phone-pair .phone:nth-child(2) img": {
+          alt: { en: "Mileage achievements and yearly medals", ja: "マイレージ達成と年間メダル" }
+        }
+      }
+    };
+  </script>
+  <script src="assets/i18n.js"></script>
+</body>
+
+</html>
