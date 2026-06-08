@@ -89,11 +89,41 @@
     }
   }
 
+  function applyImages(language) {
+    document.querySelectorAll('img[src^="screenshots/"]').forEach((image) => {
+      if (!image.dataset.miriamOriginalSrc) {
+        image.dataset.miriamOriginalSrc = image.getAttribute("src");
+      }
+
+      const original = image.dataset.miriamOriginalSrc;
+      if (!original) return;
+
+      image.onerror = null;
+
+      if (language === "en") {
+        image.setAttribute("src", original);
+        return;
+      }
+
+      const fileName = original.split("/").pop();
+      const localized = `screenshots/${language}/${fileName}`;
+
+      image.onerror = () => {
+        if (image.getAttribute("src") === localized) {
+          image.onerror = null;
+          image.setAttribute("src", original);
+        }
+      };
+      image.setAttribute("src", localized);
+    });
+  }
+
   function applyLanguage(language) {
     document.documentElement.lang = language;
     applyMeta(language);
     applyTextMap(language);
     applyAttributes(language);
+    applyImages(language);
 
     document.querySelectorAll("[data-lang-option]").forEach((button) => {
       const active = button.getAttribute("data-lang-option") === language;
