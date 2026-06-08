@@ -721,69 +721,65 @@
     <div class="container">
       <div class="section-head">
         <h2>거리 벨트</h2>
-        <p>거리 벨트는 누적 러닝 거리를 기준으로 정해집니다. 0 km에서 시작해 40,000 km까지, 현재까지 달린 총거리를 등급으로 표시합니다.</p>
+        <p>거리 벨트는 누적 러닝 거리를 기준으로 정해집니다. 0 km에서 시작해 50,000 km까지, 현재까지 달린 총거리를 등급으로 표시합니다.</p>
       </div>
 
       <div class="belt-grid">
         <div class="belt-row">
           <div class="belt-name">흰띠</div>
-          <div class="belt-scale white" style="--points: 6;">
+          <div class="belt-scale white" style="--points: 5;">
             <span class="belt-point">0</span>
-            <span class="belt-point">50</span>
-            <span class="belt-point">150</span>
-            <span class="belt-point">300</span>
-            <span class="belt-point">400</span>
-            <span class="belt-point">500</span>
+            <span class="belt-point">20</span>
+            <span class="belt-point">45</span>
+            <span class="belt-point">70</span>
+            <span class="belt-point">100</span>
           </div>
         </div>
         <div class="belt-row">
           <div class="belt-name">파란띠</div>
-          <div class="belt-scale blue" style="--points: 6;">
+          <div class="belt-scale blue" style="--points: 5;">
+            <span class="belt-point">100</span>
+            <span class="belt-point">175</span>
+            <span class="belt-point">265</span>
+            <span class="belt-point">375</span>
             <span class="belt-point">500</span>
-            <span class="belt-point">750</span>
-            <span class="belt-point">1,000</span>
-            <span class="belt-point">1,300</span>
-            <span class="belt-point">1,600</span>
-            <span class="belt-point">1,800</span>
           </div>
         </div>
         <div class="belt-row">
           <div class="belt-name">보라띠</div>
-          <div class="belt-scale purple" style="--points: 6;">
-            <span class="belt-point">1,800</span>
-            <span class="belt-point">2,500</span>
-            <span class="belt-point">3,200</span>
-            <span class="belt-point">4,000</span>
-            <span class="belt-point">4,500</span>
-            <span class="belt-point">5,000</span>
+          <div class="belt-scale purple" style="--points: 5;">
+            <span class="belt-point">500</span>
+            <span class="belt-point">800</span>
+            <span class="belt-point">1,100</span>
+            <span class="belt-point">1,500</span>
+            <span class="belt-point">2,000</span>
           </div>
         </div>
         <div class="belt-row">
           <div class="belt-name">갈색띠</div>
-          <div class="belt-scale brown" style="--points: 6;">
+          <div class="belt-scale brown" style="--points: 5;">
+            <span class="belt-point">2,000</span>
+            <span class="belt-point">2,600</span>
+            <span class="belt-point">3,400</span>
+            <span class="belt-point">4,200</span>
             <span class="belt-point">5,000</span>
-            <span class="belt-point">6,000</span>
-            <span class="belt-point">7,500</span>
-            <span class="belt-point">9,000</span>
-            <span class="belt-point">9,500</span>
-            <span class="belt-point">10,000</span>
           </div>
         </div>
         <div class="belt-row">
           <div class="belt-name">검은띠</div>
           <div class="belt-scale black" style="--points: 6;">
-            <span class="belt-point">10,000</span>
+            <span class="belt-point">5,000</span>
+            <span class="belt-point">6,000</span>
+            <span class="belt-point">7,500</span>
+            <span class="belt-point">9,500</span>
             <span class="belt-point">12,000</span>
-            <span class="belt-point">14,000</span>
-            <span class="belt-point">17,000</span>
-            <span class="belt-point">19,000</span>
-            <span class="belt-point">20,000</span>
+            <span class="belt-point">15,000</span>
           </div>
         </div>
         <div class="belt-row">
           <div class="belt-name">빨검띠</div>
           <div class="belt-scale coral" style="--points: 2;">
-            <span class="belt-point">20,000</span>
+            <span class="belt-point">15,000</span>
             <span class="belt-point">30,000</span>
           </div>
         </div>
@@ -791,18 +787,18 @@
           <div class="belt-name">빨흰띠</div>
           <div class="belt-scale redwhite" style="--points: 2;">
             <span class="belt-point">30,000</span>
-            <span class="belt-point">40,000</span>
+            <span class="belt-point">50,000</span>
           </div>
         </div>
         <div class="belt-row">
           <div class="belt-name">빨간띠</div>
           <div class="belt-scale red one" style="--points: 1;">
-            <span class="belt-point">40,000</span>
+            <span class="belt-point">50,000</span>
           </div>
         </div>
       </div>
 
-      <p class="footnote">흰띠부터 검은띠까지는 각 띠 안에 4개의 세부 단계가 있습니다. 검은띠 이후에는 20,000 km, 30,000 km, 40,000 km 기준만 표시합니다.</p>
+      <p class="footnote">흰띠부터 검은띠까지는 각 띠 안에 4개의 세부 단계가 있습니다. 검은띠 이후에는 15,000 km, 30,000 km, 50,000 km 기준만 표시합니다.</p>
     </div>
   </section>
 
@@ -859,16 +855,16 @@
         "한 주 동안 달린 총거리가 25K부터 300K까지의 기준에 도달하면 배지로 기록됩니다.": { en: "When weekly distance reaches a threshold from 25K to 300K, it is recorded as a badge.", ja: "1週間の総距離が25Kから300Kまでの基準に到達すると、バッジとして記録されます。" },
         "월간 마일리지": { en: "Monthly Mileage", ja: "月間マイレージ" },
         "한 달 동안 달린 총거리가 50K부터 1500K까지의 기준에 도달하면 배지로 기록됩니다.": { en: "When monthly distance reaches a threshold from 50K to 1500K, it is recorded as a badge.", ja: "1か月の総距離が50Kから1500Kまでの基準に到達すると、バッジとして記録されます。" },
-        "거리 벨트는 누적 러닝 거리를 기준으로 정해집니다. 0 km에서 시작해 40,000 km까지, 현재까지 달린 총거리를 등급으로 표시합니다.": { en: "Distance belts are based on cumulative running distance. From 0 km to 40,000 km, they show your total distance as a grade.", ja: "距離ベルトは累積ランニング距離を基準に決まります。0 kmから40,000 kmまで、これまでに走った総距離を等級として表示します。" },
-        "흰띠": { en: "White", ja: "白帯" },
-        "파란띠": { en: "Blue", ja: "青帯" },
-        "보라띠": { en: "Purple", ja: "紫帯" },
-        "갈색띠": { en: "Brown", ja: "茶帯" },
-        "검은띠": { en: "Black", ja: "黒帯" },
-        "빨검띠": { en: "Red/Black", ja: "赤黒帯" },
-        "빨흰띠": { en: "Red/White", ja: "赤白帯" },
-        "빨간띠": { en: "Red", ja: "赤帯" },
-        "흰띠부터 검은띠까지는 각 띠 안에 4개의 세부 단계가 있습니다. 검은띠 이후에는 20,000 km, 30,000 km, 40,000 km 기준만 표시합니다.": { en: "White through black belts have four stripe stages within each belt. After black belt, only the 20,000 km, 30,000 km, and 40,000 km thresholds are shown.", ja: "白帯から黒帯までは、各帯の中に4つの段階があります。黒帯以降は20,000 km、30,000 km、40,000 kmの基準のみを表示します。" },
+        "거리 벨트는 누적 러닝 거리를 기준으로 정해집니다. 0 km에서 시작해 50,000 km까지, 현재까지 달린 총거리를 등급으로 표시합니다.": { en: "Distance belts are based on cumulative running distance. From 0 km to 50,000 km, they show your total distance as a grade.", ja: "距離ベルトは累積ランニング距離を基準に決まります。0 kmから50,000 kmまで、これまでに走った総距離を等級として表示します。" },
+        "흰띠": { en: "White Belt", ja: "白帯" },
+        "파란띠": { en: "Blue Belt", ja: "青帯" },
+        "보라띠": { en: "Purple Belt", ja: "紫帯" },
+        "갈색띠": { en: "Brown Belt", ja: "茶帯" },
+        "검은띠": { en: "Black Belt", ja: "黒帯" },
+        "빨검띠": { en: "Red-and-Black Belt", ja: "赤黒帯" },
+        "빨흰띠": { en: "Red-and-White Belt", ja: "赤白帯" },
+        "빨간띠": { en: "Red Belt", ja: "赤帯" },
+        "흰띠부터 검은띠까지는 각 띠 안에 4개의 세부 단계가 있습니다. 검은띠 이후에는 15,000 km, 30,000 km, 50,000 km 기준만 표시합니다.": { en: "White through black belts have four stripe stages within each belt. After black belt, only the 15,000 km, 30,000 km, and 50,000 km thresholds are shown.", ja: "白帯から黒帯までは、各帯の中に4つの段階があります。黒帯以降は15,000 km、30,000 km、50,000 kmの基準のみを表示します。" },
         "개인정보": { en: "Privacy", ja: "プライバシー" }
       },
       attrs: {
