@@ -179,6 +179,15 @@
       word-break: keep-all;
     }
 
+    html[lang="ja"] h1,
+    html[lang="ja"] h2,
+    html[lang="ja"] h3,
+    html[lang="ja"] p {
+      word-break: normal;
+      line-break: strict;
+      overflow-wrap: break-word;
+    }
+
     h1,
     h2,
     h3 {
@@ -235,14 +244,14 @@
       line-height: 1.65;
       max-width: 48ch;
       margin-bottom: 30px;
-      overflow-wrap: anywhere;
+      overflow-wrap: break-word;
     }
 
     html[lang="ja"] .hero h1,
     html[lang="ja"] .hero .sub {
       word-break: normal;
       line-break: strict;
-      overflow-wrap: anywhere;
+      overflow-wrap: break-word;
     }
 
     .hero-actions {
@@ -624,6 +633,7 @@
         <article class="badge-card"><img src="assets/badges/HippieBadgeLongestRun.png" alt="Longest Run 배지" /><strong>Longest Run</strong><span>최장 거리</span></article>
         <article class="badge-card"><img src="assets/badges/HippieBadgeTopVert.png" alt="Top Vert 배지" /><strong>Top Vert</strong><span>최고 상승 고도</span></article>
         <article class="badge-card"><img src="assets/badges/HippieBadgeFastest1MI.png" alt="Fastest 1 Mile 배지" /><strong>Fastest 1 Mile</strong><span>1마일 최고 기록</span></article>
+        <article class="badge-card"><img src="assets/badges/HippieBadgeFastest3K.png" alt="Fastest 3K 배지" /><strong>Fastest 3K</strong><span>3K 최고 기록</span></article>
         <article class="badge-card"><img src="assets/badges/HippieBadgeFastest5K.png" alt="Fastest 5K 배지" /><strong>Fastest 5K</strong><span>5K 최고 기록</span></article>
         <article class="badge-card"><img src="assets/badges/HippieBadgeFastest5MI.png" alt="Fastest 5 Mile 배지" /><strong>Fastest 5 Mile</strong><span>5마일 최고 기록</span></article>
         <article class="badge-card"><img src="assets/badges/HippieBadgeFastest10K.png" alt="Fastest 10K 배지" /><strong>Fastest 10K</strong><span>10K 최고 기록</span></article>
@@ -641,6 +651,7 @@
         <h3>거리 완주 배지</h3>
         <div class="badge-grid">
           <article class="badge-card"><img src="assets/badges/HippieBadgeFinish1MI.png" alt="Finish 1 Mile 배지" /><strong>Finish 1 Mile</strong><span>1마일 완주</span></article>
+          <article class="badge-card"><img src="assets/badges/HippieBadgeRun3K.png" alt="3K Run 배지" /><strong>3K Run</strong><span>3K 완주</span></article>
           <article class="badge-card"><img src="assets/badges/HippieBadgeFinish5K.png" alt="Finish 5K 배지" /><strong>Finish 5K</strong><span>5K 완주</span></article>
           <article class="badge-card"><img src="assets/badges/HippieBadgeFinish5MI.png" alt="Finish 5 Mile 배지" /><strong>Finish 5 Mile</strong><span>5마일 완주</span></article>
           <article class="badge-card"><img src="assets/badges/HippieBadgeFinish10K.png" alt="Finish 10K 배지" /><strong>Finish 10K</strong><span>10K 완주</span></article>
