@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>미리엄 수상 기록 - 배지와 거리 벨트</title>
   <meta name="description"
-    content="미리엄의 개인 기록 배지, 거리 완주 배지, 주간·월간 마일리지 마일스톤, 거리 벨트 시스템을 한눈에 살펴보세요." />
+    content="미리엄의 개인 기록, 거리 완주, 마일리지 달성, 연간 메달, 거리 벨트 시스템을 한눈에 살펴보세요." />
 
   <meta property="og:title" content="미리엄 수상 기록 - 배지와 거리 벨트" />
   <meta property="og:description"
-    content="개인 기록, 거리 완주, 주간·월간 마일리지, 거리 벨트까지 미리엄의 수상 시스템을 한 페이지에 정리했습니다." />
+    content="개인 기록, 거리 완주, 마일리지 달성, 연간 메달, 거리 벨트까지 미리엄의 수상 시스템을 한 페이지에 정리했습니다." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/app-icon.png" />
 
@@ -388,6 +388,75 @@
       margin-bottom: 26px;
     }
 
+    .annual-medal-scale {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      max-width: 760px;
+      border-top: 1px solid var(--ink-rule);
+      border-bottom: 1px solid var(--ink-rule);
+    }
+
+    .annual-medal {
+      --tone-start: #777;
+      --tone-end: #aaa;
+      min-width: 0;
+      padding: 18px 14px 16px 0;
+    }
+
+    .annual-medal::before {
+      content: "";
+      display: block;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--tone-start), var(--tone-end));
+    }
+
+    .annual-medal .threshold {
+      display: block;
+      color: var(--fg-on-dark-muted);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 5px;
+      white-space: nowrap;
+    }
+
+    .annual-medal .name {
+      display: block;
+      color: var(--fg-on-dark);
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.25;
+      overflow-wrap: break-word;
+    }
+
+    .annual-medal.bronze {
+      --tone-start: #7b3514;
+      --tone-end: #b78349;
+    }
+
+    .annual-medal.silver {
+      --tone-start: #717982;
+      --tone-end: #c7c7c7;
+    }
+
+    .annual-medal.gold {
+      --tone-start: #9a6400;
+      --tone-end: #f2cf52;
+    }
+
+    .annual-medal.platinum {
+      --tone-start: #56646c;
+      --tone-end: #b0b8c2;
+    }
+
+    .annual-medal.diamond {
+      --tone-start: #1c9fd0;
+      --tone-end: #a7fff2;
+    }
+
     .belt-grid {
       display: grid;
       gap: 26px;
@@ -568,6 +637,10 @@
         gap: 22px 16px;
       }
 
+      .annual-medal-scale {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .badge-card img {
         width: 100%;
       }
@@ -590,7 +663,8 @@
       </a>
       <div class="links">
         <a href="#records">개인 기록</a>
-        <a href="#mileage">마일리지</a>
+        <a href="#mileage">마일리지 달성</a>
+        <a href="#yearly-medals">연간 메달</a>
         <a href="#belts">거리 벨트</a>
         <a href="index.html">소개</a>
       </div>
@@ -608,7 +682,7 @@
         <div>
           <span class="kicker">Awards</span>
           <h1>러닝 기록이 배지가 됩니다</h1>
-          <p class="sub">미리엄은 빠른 기록, 긴 거리, 표준 거리 완주, 주간·월간 마일리지를 각각 다른 배지로 남깁니다. 누적 거리는 거리 벨트 등급으로 표시됩니다.</p>
+          <p class="sub">미리엄은 빠른 기록, 긴 거리, 표준 거리 완주, 마일리지 달성, 연간 메달을 각각 다른 수상 기록으로 남깁니다. 누적 거리는 거리 벨트 등급으로 표시됩니다.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#records">배지 보기</a>
             <a class="btn btn-ghost" href="#belts">거리 벨트</a>
@@ -625,7 +699,7 @@
   <section class="dark" id="records">
     <div class="container">
       <div class="section-head">
-        <h2>개인 기록 배지</h2>
+        <h2>개인 기록</h2>
         <p>가장 빠른 표준 거리, 가장 긴 러닝, 가장 높은 상승 고도처럼 한 번의 러닝이 남긴 최고 기록을 모읍니다. 세션 안의 가장 빠른 표준 거리 구간도 개인 기록 후보가 됩니다.</p>
         <p>개인 기록과 거리 완주 배지는 타이포그래픽 스타일과 히피 스타일로 제공되며, 아래 예시는 히피 스타일 배지입니다.</p>
       </div>
@@ -649,7 +723,7 @@
       </div>
 
       <div class="subsection">
-        <h3>거리 완주 배지</h3>
+        <h3>거리 완주</h3>
         <div class="badge-grid">
           <article class="badge-card"><img src="assets/badges/HippieBadgeRun100MI.png" alt="100 Mile Run 배지" /><strong>100 Mile Run</strong><span>100마일 완주</span></article>
           <article class="badge-card"><img src="assets/badges/HippieBadgeRun100K.png" alt="100K Run 배지" /><strong>100K Run</strong><span>100K 완주</span></article>
@@ -672,7 +746,7 @@
   <section class="dark" id="mileage">
     <div class="container">
       <div class="section-head">
-        <h2>마일리지 마일스톤</h2>
+        <h2>마일리지 달성</h2>
         <p>특정 주나 월에 달성한 누적 거리는 기간 배지로 남습니다.</p>
       </div>
 
@@ -725,6 +799,23 @@
           <article class="badge-card"><img src="assets/badges/HippieBadgeMonth1200K.png" alt="Month 1200K 배지" /><strong>Month 1200K</strong><span>월간 1200 km</span></article>
           <article class="badge-card"><img src="assets/badges/HippieBadgeMonth1500K.png" alt="Month 1500K 배지" /><strong>Month 1500K</strong><span>월간 1500 km</span></article>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="yearly-medals">
+    <div class="container">
+      <div class="section-head">
+        <h2>연간 메달</h2>
+        <p>연간 메달은 한 해 동안 달린 총거리를 기준으로 정해집니다. 수상 화면에서는 해당 연도의 마일리지가 타이포그래픽 스타일로 표시되며, 누적 거리에 따라 Bronze, Silver, Gold, Platinum, Diamond 색상으로 구분됩니다.</p>
+      </div>
+
+      <div class="annual-medal-scale" aria-label="연간 메달 기준">
+        <span class="annual-medal bronze"><span class="threshold">100 km</span><span class="name">Bronze</span></span>
+        <span class="annual-medal silver"><span class="threshold">500 km</span><span class="name">Silver</span></span>
+        <span class="annual-medal gold"><span class="threshold">1,000 km</span><span class="name">Gold</span></span>
+        <span class="annual-medal platinum"><span class="threshold">2,000 km</span><span class="name">Platinum</span></span>
+        <span class="annual-medal diamond"><span class="threshold">3,000 km</span><span class="name">Diamond</span></span>
       </div>
     </div>
   </section>
@@ -836,34 +927,36 @@
       meta: {
         ko: {
           title: "미리엄 수상 기록 - 배지와 거리 벨트",
-          description: "미리엄의 개인 기록 배지, 거리 완주 배지, 주간·월간 마일리지 마일스톤, 거리 벨트 시스템을 한눈에 살펴보세요."
+          description: "미리엄의 개인 기록, 거리 완주, 마일리지 달성, 연간 메달, 거리 벨트 시스템을 한눈에 살펴보세요."
         },
         en: {
           title: "Miriam Awards - Badges and Distance Belts",
-          description: "Browse Miriam's personal record badges, distance completion badges, weekly and monthly mileage milestones, and distance belt system."
+          description: "Browse Miriam's personal record badges, distance completion badges, weekly and monthly mileage milestones, yearly medals, and distance belt system."
         },
         ja: {
           title: "Miriamの受賞記録 - バッジと距離ベルト",
-          description: "Miriamの自己記録バッジ、距離完走バッジ、週間・月間マイレージマイルストーン、距離ベルトを一覧できます。"
+          description: "Miriamの個人記録、距離完走、走行距離達成、年間メダル、距離ベルトを一覧できます。"
         }
       },
       text: {
         "미리엄": { en: "Miriam", ja: "Miriam" },
-        "개인 기록": { en: "Records", ja: "自己記録" },
+        "개인 기록": { en: "Personal Records", ja: "個人記録" },
         "마일리지": { en: "Mileage", ja: "マイレージ" },
+        "마일리지 달성": { en: "Mileage Milestones", ja: "走行距離達成" },
         "거리 벨트": { en: "Distance Belts", ja: "距離ベルト" },
         "소개": { en: "Overview", ja: "紹介" },
         "러닝 기록이 배지가 됩니다": { en: "Running records become badges", ja: "ランニング記録がバッジになります" },
-        "미리엄은 빠른 기록, 긴 거리, 표준 거리 완주, 주간·월간 마일리지를 각각 다른 배지로 남깁니다. 누적 거리는 거리 벨트 등급으로 표시됩니다.": { en: "Miriam keeps fast times, long runs, standard distance finishes, and weekly or monthly mileage as separate badges. Total distance is shown as a distance belt grade.", ja: "Miriamは速い記録、長い距離、標準距離の完走、週間・月間マイレージをそれぞれ別のバッジとして残します。累積距離は距離ベルトの等級で表示されます。" },
+        "미리엄은 빠른 기록, 긴 거리, 표준 거리 완주, 마일리지 달성, 연간 메달을 각각 다른 수상 기록으로 남깁니다. 누적 거리는 거리 벨트 등급으로 표시됩니다.": { en: "Miriam keeps fast times, long runs, distance completions, mileage milestones, and yearly medals as separate awards. Total distance is shown as a distance belt grade.", ja: "Miriamは速い記録、長い距離、距離完走、走行距離達成、年間メダルをそれぞれ別の受賞記録として残します。累積距離は距離ベルトの等級で表示されます。" },
         "배지 보기": { en: "View Badges", ja: "バッジを見る" },
-        "개인 기록 배지": { en: "Personal Record Badges", ja: "自己記録バッジ" },
         "가장 빠른 표준 거리, 가장 긴 러닝, 가장 높은 상승 고도처럼 한 번의 러닝이 남긴 최고 기록을 모읍니다. 세션 안의 가장 빠른 표준 거리 구간도 개인 기록 후보가 됩니다.": { en: "Collect the best results from a run, such as fastest standard distance, longest run, and highest elevation gain. The fastest standard-distance segment inside a session can also count as a personal record candidate.", ja: "最速の標準距離、最長ラン、最大獲得標高など、1回のランで残した最高記録をまとめます。セッション内の最速の標準距離区間も自己記録の候補になります。" },
         "개인 기록과 거리 완주 배지는 타이포그래픽 스타일과 히피 스타일로 제공되며, 아래 예시는 히피 스타일 배지입니다.": { en: "Personal record and distance completion badges are available in both typographic and hippie styles; the examples below show the hippie style.", ja: "自己記録バッジと距離完走バッジはタイポグラフィックスタイルとヒッピースタイルの両方で提供され、以下の例ではヒッピースタイルを表示しています。" },
-        "거리 완주 배지": { en: "Distance Completion Badges", ja: "距離完走バッジ" },
-        "마일리지 마일스톤": { en: "Mileage Milestones", ja: "マイレージマイルストーン" },
+        "거리 완주": { en: "Distance Completions", ja: "距離完走" },
         "특정 주나 월에 달성한 누적 거리는 기간 배지로 남습니다.": { en: "Weekly and monthly totals are saved as period badges.", ja: "特定の週や月に達成した累積距離は期間バッジとして残ります。" },
         "피크 마일리지": { en: "Peak Mileage", ja: "ピークマイレージ" },
         "하루, 주, 월, 년 단위로 가장 멀리 달린 기간을 별도 배지로 보여줍니다.": { en: "Shows the day, week, month, and year with the highest distance as separate badges.", ja: "日・週・月・年ごとに最も長く走った期間を別のバッジで表示します。" },
+        "연간 메달": { en: "Yearly Medals", ja: "年間メダル" },
+        "연간 메달은 한 해 동안 달린 총거리를 기준으로 정해집니다. 수상 화면에서는 해당 연도의 마일리지가 타이포그래픽 스타일로 표시되며, 누적 거리에 따라 Bronze, Silver, Gold, Platinum, Diamond 색상으로 구분됩니다.": { en: "Yearly medals are based on the total distance run in a calendar year. In Awards, each year's mileage is shown as a typographic medal, colored by tier: Bronze, Silver, Gold, Platinum, or Diamond.", ja: "年間メダルは、1年間に走った総距離を基準に決まります。受賞画面では、その年のマイレージがタイポグラフィックスタイルで表示され、距離に応じてBronze、Silver、Gold、Platinum、Diamondの色で区分されます。" },
+        "연간 메달 기준": { en: "Yearly medal thresholds", ja: "年間メダルの基準" },
         "주간 마일리지": { en: "Weekly Mileage", ja: "週間マイレージ" },
         "한 주 동안 달린 총거리가 25K부터 300K까지의 기준에 도달하면 배지로 기록됩니다.": { en: "When weekly distance reaches a threshold from 25K to 300K, it is recorded as a badge.", ja: "1週間の総距離が25Kから300Kまでの基準に到達すると、バッジとして記録されます。" },
         "월간 마일리지": { en: "Monthly Mileage", ja: "月間マイレージ" },
@@ -888,7 +981,10 @@
           alt: { en: "Brown belt and personal record badges", ja: "茶帯と自己記録バッジ" }
         },
         ".phone-pair .phone:nth-child(2) img": {
-          alt: { en: "Mileage achievements and yearly medals", ja: "マイレージ達成と年間メダル" }
+          alt: { en: "Mileage milestones and yearly medals", ja: "走行距離達成と年間メダル" }
+        },
+        ".annual-medal-scale": {
+          "aria-label": { en: "Yearly medal thresholds", ja: "年間メダルの基準" }
         }
       }
     };
