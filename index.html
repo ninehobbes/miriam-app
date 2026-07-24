@@ -267,13 +267,21 @@
       color: var(--fg-on-dark-soft);
       max-width: 46ch;
       line-height: 1.55;
-      margin-bottom: 32px;
+      margin-bottom: 14px;
     }
 
     @media (max-width: 820px) {
       .hero p.sub {
         font-size: 17px;
       }
+    }
+
+    .hero p.note {
+      font-size: 16px;
+      color: var(--fg-on-dark);
+      max-width: 42ch;
+      line-height: 1.55;
+      margin-bottom: 32px;
     }
 
     .hero .ctas {
@@ -1112,6 +1120,7 @@
           <p class="sub reveal">
             Apple Watch와 애플 피트니스의 러닝 기록을 기간·코스·거리별로 살펴보고, 트렌드와 순위, 수상 이력까지 한눈에 확인하세요. 나만의 목표를 설정하고 연속 달성을 이어가세요.
           </p>
+          <p class="note reveal">늘 쓰던 Apple Watch로 달리세요. 기록 정리는 미리엄이 알아서 합니다.</p>
           <div class="ctas reveal">
             <!-- TODO: replace with public TestFlight invite URL -->
             <a class="btn btn-primary" href="#beta">베타 안내 보기</a>
@@ -1186,7 +1195,7 @@
     </div>
 
     <div class="stage reveal">
-      <span class="visual-tag">멀티샷 · 3 화면</span>
+      <span class="visual-tag">기간 · 거리 · 코스</span>
       <div class="phone-multi">
         <div class="phone"><img src="screenshots/stats-period.jpg" alt="2026년 기간별 추이 차트" /></div>
         <div class="phone"><img src="screenshots/stats-distance.jpg" alt="5K 완주 기준 표준 거리별 추이" /></div>
@@ -1204,7 +1213,7 @@
       </p>
     </div>
     <div class="stage reveal">
-      <span class="visual-tag">정적 · 1 화면</span>
+      <span class="visual-tag">목표 · 연속 달성</span>
       <div class="phone-multi">
         <div class="phone"><img src="screenshots/goals-streak.jpg" alt="매주 한 번 10km 달리기 — 17주 연속 달성" /></div>
       </div>
@@ -1218,13 +1227,13 @@
         <div class="text reveal">
           <h2>자주 달리는 길은 코스가 됩니다</h2>
           <p>
-            마음에 드는 코스를 등록하면, 이후 비슷한 GPS 경로의 러닝이
-            같은 코스로 자동 매칭됩니다. 한 코스의 페이스, 심박, 거리 추이를
-            따로 보고, 익숙한 길에서 몸이 어떻게 달라졌는지 비교할 수 있습니다.
+            저장된 러닝 하나를 코스로 등록하면, 과거의 비슷한 경로는 물론
+            이후 달린 유사한 GPS 경로까지 같은 코스로 자동 매칭됩니다.
+            익숙한 길의 페이스, 심박, 거리 추이가 따로 쌓여 몸의 변화를 비교할 수 있습니다.
           </p>
         </div>
         <div class="visual reveal">
-          <span class="visual-tag">멀티샷 · 2 화면</span>
+          <span class="visual-tag">코스 목록 · 상세</span>
           <div class="phone-multi">
             <div class="phone"><img src="screenshots/courses-list.jpg" alt="등록한 코스 목록" /></div>
             <div class="phone"><img src="screenshots/courses-detail.jpg" alt="성산교 반환 코스 세부사항" /></div>
@@ -1248,7 +1257,7 @@
           </p>
         </div>
         <div class="visual reveal">
-          <span class="visual-tag">멀티샷 · 3 화면</span>
+          <span class="visual-tag">거리 · 코스 · 고도</span>
           <div class="phone-multi">
             <div class="phone"><img src="screenshots/ranking-10k-best.jpg" alt="10K 완주 — 최고 구간 기록 정렬" /></div>
             <div class="phone"><img src="screenshots/ranking-course-hr.jpg" alt="성산교 반환 코스 — 평균 심박 정렬" /></div>
@@ -1272,7 +1281,7 @@
           </p>
         </div>
         <div class="visual reveal">
-          <span class="visual-tag">멀티샷 · 2 화면</span>
+          <span class="visual-tag">상세 · 비교</span>
           <div class="phone-multi">
             <div class="phone"><img src="screenshots/compare-1.jpg" alt="러닝 상세 — 수상 finish 10K 와 세부사항" /></div>
             <div class="phone"><img src="screenshots/compare-2.jpg" alt="비교 시트 — 1개월·동일 코스 4개 세션 대비 변화" /></div>
@@ -1296,7 +1305,7 @@
           </div>
         </div>
         <div class="visual reveal">
-          <span class="visual-tag">멀티샷 · 2 화면</span>
+          <span class="visual-tag">벨트 · 배지</span>
           <div class="phone-multi">
             <div class="phone"><img src="screenshots/awards-belt.jpg" alt="갈색띠 — 개인 기록과 목표 연속 달성" /></div>
             <div class="phone"><img src="screenshots/awards-records.jpg" alt="마일리지 달성과 연간 메달" /></div>
@@ -1319,7 +1328,7 @@
         </p>
       </div>
       <div class="reveal">
-        <span class="visual-tag">카드 그리드 · 4 종류</span>
+        <span class="visual-tag">세션 · 기간 카드</span>
         <div class="share-grid">
           <div class="share-card highlight"><img src="screenshots/share-session.jpg" alt="세션 카드 — 항공 지도와 10K 한강 코스" /></div>
           <div class="share-card"><img src="screenshots/share-yearly.jpg" alt="연간 카드 — 항공 지도 경로 히트맵" /></div>
@@ -1560,6 +1569,7 @@
         "미리엄 · iOS · TestFlight 비공개 베타": { en: "Miriam · iOS · Private TestFlight beta", ja: "Miriam · iOS · TestFlight非公開ベータ" },
         "Apple Watch의 러닝 기록을 재발견하세요": { en: "Rediscover your Apple Watch running history", ja: "Apple Watchのランニング記録を再発見" },
         "Apple Watch와 애플 피트니스의 러닝 기록을 기간·코스·거리별로 살펴보고, 트렌드와 순위, 수상 이력까지 한눈에 확인하세요. 나만의 목표를 설정하고 연속 달성을 이어가세요.": { en: "Explore running data from Apple Watch and Apple Fitness by period, course, and distance. See trends, rankings, awards, goals, and streaks in one place.", ja: "Apple WatchとAppleのフィットネスのランニング記録を期間・コース・距離別に確認し、トレンド、ランキング、受賞履歴までひと目で把握できます。自分の目標を設定し、連続達成を続けましょう。" },
+        "늘 쓰던 Apple Watch로 달리세요. 기록 정리는 미리엄이 알아서 합니다.": { en: "Keep running with the Apple Watch you already use. Miriam takes care of organizing the records.", ja: "いつものApple Watchで走り続けてください。記録の整理はMiriamに任せられます。" },
         "베타 안내 보기": { en: "Beta Info", ja: "ベータ案内" },
         "기능": { en: "Features", ja: "機能" },
         "HealthKit 기반": { en: "HealthKit-based", ja: "HealthKitベース" },
@@ -1581,24 +1591,27 @@
         "등록한 코스별": { en: "Registered courses", ja: "登録したコース別" },
         "메트릭": { en: "Metrics", ja: "指標" },
         "거리 · 페이스 · 심박 · 고도 · 케이던스 등 10개 이상": { en: "Distance · Pace · Heart Rate · Elevation · Cadence, and 10+ total", ja: "距離 · ペース · 心拍 · 高度 · ケイデンスなど10種類以上" },
-        "멀티샷 · 3 화면": { en: "Multi-shot · 3 screens", ja: "マルチショット · 3画面" },
+        "기간 · 거리 · 코스": { en: "Period · Distance · Course", ja: "期間 · 距離 · コース" },
         "목표를 만들고 연속 기록을 이어가세요": { en: "Set goals and keep streaks going", ja: "目標を作り、連続記録を続ける" },
         "주간 거리, 월간 횟수, 10K 완주 같은 목표를 만들면 기간마다 달성 여부가 기록되고, 연속 달성이 카운트됩니다.": { en: "Create goals such as weekly distance, monthly run count, or 10K finishes. Miriam records whether each period was completed and counts streaks.", ja: "週間距離、月間回数、10K完走などの目標を作ると、各期間の達成状況が記録され、連続達成がカウントされます。" },
-        "정적 · 1 화면": { en: "Static · 1 screen", ja: "静止 · 1画面" },
+        "목표 · 연속 달성": { en: "Goals · Streaks", ja: "目標 · 連続達成" },
         "자주 달리는 길은 코스가 됩니다": { en: "Frequent routes become courses", ja: "よく走る道がコースになります" },
-        "마음에 드는 코스를 등록하면, 이후 비슷한 GPS 경로의 러닝이 같은 코스로 자동 매칭됩니다. 한 코스의 페이스, 심박, 거리 추이를 따로 보고, 익숙한 길에서 몸이 어떻게 달라졌는지 비교할 수 있습니다.": { en: "Register a route you like, and future runs with similar GPS paths are matched to the same course. Review pace, heart rate, and distance trends for each course.", ja: "気に入ったコースを登録すると、その後の似たGPS経路のランが同じコースに自動でマッチされます。コースごとのペース、心拍、距離の推移を確認できます。" },
-        "멀티샷 · 2 화면": { en: "Multi-shot · 2 screens", ja: "マルチショット · 2画面" },
+        "저장된 러닝 하나를 코스로 등록하면, 과거의 비슷한 경로는 물론 이후 달린 유사한 GPS 경로까지 같은 코스로 자동 매칭됩니다. 익숙한 길의 페이스, 심박, 거리 추이가 따로 쌓여 몸의 변화를 비교할 수 있습니다.": { en: "Choose one saved run and register it as a course. Similar past routes, and future runs with similar GPS paths, are automatically matched to the same course. See pace, heart-rate, and distance trends for familiar roads in one place.", ja: "保存済みのランをひとつ選んでコースとして登録すると、過去の似た経路はもちろん、今後の似たGPS経路のランも同じコースに自動でマッチされます。慣れた道のペース、心拍、距離の推移をコースごとに比較できます。" },
+        "코스 목록 · 상세": { en: "Course List · Detail", ja: "コース一覧 · 詳細" },
         "원하는 조건의 베스트를 찾습니다": { en: "Find your best runs by condition", ja: "条件に合うベストを探す" },
         "세션 목록을 표준 거리나 코스로 필터링하고 거리, 시간, 페이스, 평균 심박, 케이던스, 파워, 활동 칼로리, 고도 상승, 접지 시간 등 10여 가지 기준으로 정렬할 수 있습니다. 12km 러닝 안의 가장 빠른 10K 처럼, 표준 거리 구간 베스트도 함께 찾아냅니다.": { en: "Filter sessions by standard distance or course, then sort by distance, time, pace, average heart rate, cadence, power, active calories, elevation gain, ground contact time, and more. Miriam also finds standard-distance bests inside longer runs, such as the fastest 10K within a 12 km run.", ja: "セッション一覧を標準距離やコースで絞り込み、距離、時間、ペース、平均心拍、ケイデンス、パワー、アクティブカロリー、獲得標高、接地時間など10種類以上の基準で並べ替えできます。12kmのランの中の最速10Kのように、標準距離区間のベストも見つけます。" },
+        "거리 · 코스 · 고도": { en: "Distance · Course · Elevation", ja: "距離 · コース · 高度" },
         "과거의 기록과 비교하세요": { en: "Compare with past records", ja: "過去の記録と比較" },
         "한 러닝의 페이스, 심박, 고도 차트 위에 같은 코스의 과거 평균과 같은 표준 거리의 본인 평균이 함께 표시됩니다. 이번 러닝이 평소보다 빨랐는지 느렸는지가 한눈에 보입니다.": { en: "Pace, heart rate, and elevation charts can show past averages for the same course and your own average for the same standard distance.", ja: "1回のランのペース、心拍、高度チャートに、同じコースの過去平均や同じ標準距離の自分の平均を重ねて表示できます。" },
+        "상세 · 비교": { en: "Detail · Compare", ja: "詳細 · 比較" },
         "모든 기록은 한곳에,": { en: "All records in one place,", ja: "すべての記録を一か所に、" },
         "누적거리는 벨트로": { en: "total distance as a belt", ja: "累積距離はベルトで" },
         "개인 기록, 목표 연속 달성, 마일리지, 연간 메달을 한눈에 확인하세요. 누적 거리는 흰띠부터 파란띠·보라띠를 거쳐 검은띠·빨간띠까지, 벨트 등급으로 장기적인 러닝 여정을 보여줍니다.": { en: "View personal records, goal streaks, mileage achievements, and yearly medals in one place. Total distance is represented as a belt grade from white to blue, purple, brown, black, and red.", ja: "自己記録、目標の連続達成、マイレージ、年間メダルをひと目で確認できます。累積距離は白帯から青帯、紫帯、茶帯、黒帯、赤帯へ進むベルト等級で表示されます。" },
         "전체 배지와 거리 벨트 보기": { en: "View All Badges and Distance Belts", ja: "すべてのバッジと距離ベルトを見る" },
+        "벨트 · 배지": { en: "Belts · Badges", ja: "ベルト · バッジ" },
         "공유 카드를 친구에게 보내세요": { en: "Send share cards to friends", ja: "共有カードを送る" },
         "세션 카드는 한 번의 러닝을 지도와 배지로 정리하고, 기간 카드는 하루 · 주간 · 월간 · 연간 · 라이프타임 기록을 요약합니다. 지도는 항공 또는 둘러보기 스타일로 고를 수 있고, 기간 카드에는 누적 경로 히트맵도 담을 수 있습니다.": { en: "Session cards turn a single run into a map-and-badge summary, while period cards summarize your day, week, month, year, or lifetime. Choose Satellite or Explore map styles, and include route heatmaps in period cards.", ja: "セッションカードは1回のランを地図とバッジでまとめ、期間カードは日・週・月・年・ライフタイムの記録を要約します。地図は航空写真または標準スタイルから選べ、期間カードには累積ルートのヒートマップも含められます。" },
-        "카드 그리드 · 4 종류": { en: "Card grid · 4 types", ja: "カードグリッド · 4種類" },
+        "세션 · 기간 카드": { en: "Session · Period Cards", ja: "セッション · 期間カード" },
         "기본 기능": { en: "Basics", ja: "基本機能" },
         "러닝 상세 차트": { en: "Run detail charts", ja: "ラン詳細チャート" },
         "구간 분석": { en: "Segment analysis", ja: "区間分析" },
