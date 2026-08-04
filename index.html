@@ -167,7 +167,11 @@
     }
 
     @media (max-width: 820px) {
-      nav.top .links {
+      /* Keep the external awards.html link visible even when the
+         page narrows — every other link is an in-page anchor the
+         user can reach by scrolling, but this one is the only way
+         to reach the badge manual from a narrow viewport. */
+      nav.top .links a:not(.badge-link) {
         display: none;
       }
 
@@ -1086,7 +1090,7 @@
         <a href="#ranking">순위</a>
         <a href="#compare">비교</a>
         <a href="#awards">수상</a>
-        <a href="awards.html">배지</a>
+        <a class="badge-link" href="awards.html">배지</a>
         <a href="#share">공유</a>
       </div>
       <div class="lang-switch" aria-label="Language">
