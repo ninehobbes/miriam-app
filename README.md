@@ -1,19 +1,26 @@
-# 미리엄
+# Miriam
 
-_서비스가 아직 오픈하지 않았습니다. 아래의 내용은 곧 준비될 예정입니다._
+English | [한국어](README.ko.md) | [日本語](README.ja.md)
 
-미리엄은 iOS 달리기 기록 앱으로 HealthKit에 쌓인 러닝을 기간·코스·거리 등 다양한 관점에서 추이·순위·수상 기록을 표시합니다. 자신만의 목표를 더해 스트릭으로 이어가세요.
+Miriam is an iOS running journal for rediscovering the runs stored in Apple Health and Apple Fitness. It organizes your Apple Watch running history by period, course, and distance, then brings together trends, rankings, awards, goals, streaks, and share cards.
 
-자세한 기능은 [랜딩 페이지](https://ninehobbes.github.io/miriam-app/)를 참고하세요.
+This repository hosts Miriam's landing page and issue tracker — it does not contain the app's source code.
 
-## 피드백
+<!-- TODO: add "Download on the App Store" badge/link once live -->
 
-- **TestFlight 내 피드백** — 스크린샷에 표시 + 디바이스 정보 자동 첨부 (가장 정확)
-- **GitHub Issues** — [버그 제보](https://github.com/ninehobbes/miriam-app/issues/new?template=bug.yml) · [기능 제안](https://github.com/ninehobbes/miriam-app/issues/new?template=feature.yml)
-- **GitHub Discussions** — [사용 후기, 자유 의견](https://github.com/ninehobbes/miriam-app/discussions)
+See the [website](https://ninehobbes.github.io/miriam-app/) for screenshots and feature details.
 
-이슈에 HealthKit 스크린샷을 첨부할 때 개인정보(이름, 위치, 시간 등)는 가려 주세요.
+## Requirements
 
-## 개인정보
+Requires iOS 26 or later. Miriam reads running workouts from Apple Health — recorded via Apple Watch, Apple Fitness, or any other app that writes to HealthKit. Detailed running dynamics (power, cadence, ground contact time, vertical oscillation) are only available when recorded with Apple Watch.
 
-미리엄은 사용자의 건강·운동 데이터를 외부로 전송하지 않습니다. 러닝 기록은 디바이스 내부에만 저장되며 분석 SDK, 광고 SDK, 사용자 추적 도구를 사용하지 않습니다. 자세한 내용은 [랜딩 페이지의 개인정보 섹션](https://ninehobbes.github.io/miriam-app/#privacy)을 참고하세요.
+## Feedback
+
+- **GitHub Issues** - [Report a bug](https://github.com/ninehobbes/miriam-app/issues/new?template=bug.yml) or [request a feature](https://github.com/ninehobbes/miriam-app/issues/new?template=feature.yml)
+- **GitHub Discussions** - [Share impressions and open feedback](https://github.com/ninehobbes/miriam-app/discussions)
+
+When attaching screenshots that include HealthKit data, please hide personal information such as names, locations, and times.
+
+## Privacy
+
+See the [privacy policy](https://ninehobbes.github.io/miriam-app/#privacy) on the website.
