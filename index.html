@@ -1409,7 +1409,7 @@
           <strong>외부 통신.</strong>
           코스 지도 타일은 Apple Maps에서 가져옵니다.
           코스 위치의 동·지명 표기를 위해 좌표를 Apple의
-          역지오코딩 API에 한 차례 보내고 그 결과를 디바이스에
+          역방향 지오코딩 API에 한 차례 보내고 그 결과를 디바이스에
           캐시합니다. 두 통신 모두 Apple의 표준 API를 통해 처리되며,
           Apple의 개인정보 처리방침이 적용됩니다.
         </p>
@@ -1592,7 +1592,7 @@
         "iCloud 동기화 (목표·코스 한정).": { en: "iCloud sync (goals and courses only).", ja: "iCloud同期（目標・コースのみ）。" },
         "앱을 삭제하고 재설치해도 목표와 코스가 복원되도록, 이 두 가지만 Apple의 iCloud 키-밸류 스토어에 저장합니다. 코스는 사용자가 붙인 이름과 식별자만 올라가며, 달린 경로는 올라가지 않습니다. 좌표·거리 같은 지리 정보는 복원 후 기기 안에서 HealthKit 기록을 바탕으로 다시 만들어집니다. 러닝 기록, 심박, 경로 등 HealthKit 데이터는 iCloud에 올리지 않습니다. iCloud 동기화는 사용자가 디바이스에서 iCloud에 로그인된 경우에만 작동하며, 같은 Apple ID 안에서만 기기 간에 공유됩니다.": { en: "Only goals and courses are stored in Apple's iCloud key-value store so they can be restored after reinstalling the app. For a course, only the name you gave it and its identifiers are uploaded — the route you ran is not. Coordinates, distance and other geographic detail are rebuilt on your device from your HealthKit records after a restore. HealthKit data such as running records, heart rate, and routes is not uploaded to iCloud. iCloud sync works only when you are signed in to iCloud on the device, and data is shared only within the same Apple ID.", ja: "アプリを削除して再インストールしても目標とコースを復元できるよう、この2項目のみAppleのiCloud Key-Value Storeに保存します。コースについてはお客様が付けた名前と識別子のみがアップロードされ、走った経路はアップロードされません。座標や距離などの地理情報は、復元後にデバイス内でHealthKitの記録から再生成されます。ランニング記録、心拍、経路などのHealthKitデータはiCloudへアップロードしません。iCloud同期はデバイスでiCloudにサインインしている場合にのみ機能し、同じApple ID内でのみ共有されます。" },
         "외부 통신.": { en: "External communication.", ja: "外部通信。" },
-        "코스 지도 타일은 Apple Maps에서 가져옵니다. 코스 위치의 동·지명 표기를 위해 좌표를 Apple의 역지오코딩 API에 한 차례 보내고 그 결과를 디바이스에 캐시합니다. 두 통신 모두 Apple의 표준 API를 통해 처리되며, Apple의 개인정보 처리방침이 적용됩니다.": { en: "Course map tiles are loaded from Apple Maps. Coordinates may be sent once to Apple's reverse geocoding API to label course locations, and the result is cached on the device. Apple's privacy policy applies to these Apple APIs.", ja: "コースの地図タイルはApple Mapsから取得します。コース位置の地名表示のため、座標をAppleの逆ジオコーディングAPIへ一度送信し、その結果をデバイスにキャッシュします。いずれもAppleの標準APIで処理され、Appleのプライバシーポリシーが適用されます。" },
+        "코스 지도 타일은 Apple Maps에서 가져옵니다. 코스 위치의 동·지명 표기를 위해 좌표를 Apple의 역방향 지오코딩 API에 한 차례 보내고 그 결과를 디바이스에 캐시합니다. 두 통신 모두 Apple의 표준 API를 통해 처리되며, Apple의 개인정보 처리방침이 적용됩니다.": { en: "Course map tiles are loaded from Apple Maps. Coordinates may be sent once to Apple's reverse geocoding API to label course locations, and the result is cached on the device. Apple's privacy policy applies to these Apple APIs.", ja: "コースの地図タイルはApple Mapsから取得します。コース位置の地名表示のため、座標をAppleの逆ジオコーディングAPIへ一度送信し、その結果をデバイスにキャッシュします。いずれもAppleの標準APIで処理され、Appleのプライバシーポリシーが適用されます。" },
         "결제 처리.": { en: "Payment processing.", ja: "決済処理。" },
         "앱 내 결제는 App Store를 통해 Apple이 직접 처리합니다. 미리엄은 카드번호 등 결제 정보에 접근하거나 저장하지 않습니다.": { en: "In-app purchases are processed directly by Apple through the App Store. Miriam does not access or store payment details such as card numbers.", ja: "アプリ内課金はApp Storeを通じてAppleが直接処理します。Miriamはカード番号などの決済情報にアクセスまたは保存しません。" },
         "데이터 보존 및 삭제.": { en: "Data retention and deletion.", ja: "データの保存と削除。" },
