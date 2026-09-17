@@ -6,7 +6,7 @@ Miriamは、AppleヘルスケアとAppleフィットネスに保存されたラ�
 
 このリポジトリはMiriamのランディングページとIssueトラッカーのみを提供します — アプリのソースコードは含まれていません。
 
-<!-- TODO: リリース後にApp Storeダウンロードバッジ/リンクを追加 -->
+**[App Storeでダウンロード](https://apps.apple.com/app/miriam-running-log/id6772893143)**
 
 スクリーンショットと詳しい機能は[ウェブサイト](https://ninehobbes.github.io/miriam-app/)をご覧ください。
 

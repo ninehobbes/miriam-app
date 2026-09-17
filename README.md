@@ -6,7 +6,7 @@ Miriam is an iOS running journal for rediscovering the runs stored in Apple Heal
 
 This repository hosts Miriam's landing page and issue tracker — it does not contain the app's source code.
 
-<!-- TODO: add "Download on the App Store" badge/link once live -->
+**[Download on the App Store](https://apps.apple.com/app/miriam-running-log/id6772893143)**
 
 See the [website](https://ninehobbes.github.io/miriam-app/) for screenshots and feature details.
 

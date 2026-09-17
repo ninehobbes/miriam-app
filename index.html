@@ -12,7 +12,8 @@
   <meta property="og:description"
     content="Apple Watch와 피트니스의 러닝 기록을 기간·코스·거리별로 살펴보고, 트렌드와 순위, 수상 이력까지 한눈에 확인하세요. 나만의 목표를 설정하고 연속 달성을 이어가세요." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/app-icon.png" />
+  <meta property="og:image" content="https://ninehobbes.github.io/miriam-app/assets/app-icon.png" />
+  <meta name="apple-itunes-app" content="app-id=6772893143" />
 
   <link rel="icon" type="image/png" href="assets/app-icon.png" />
 
@@ -285,6 +286,12 @@
 
     .hero p.note {
       margin-bottom: 32px;
+    }
+
+    .hero p.requirement {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--fg-on-dark-muted);
     }
 
     .hero .ctas {
@@ -920,7 +927,7 @@
     /* ===== FEEDBACK / PRIVACY ===== */
     .channels {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 40px;
     }
 
@@ -1081,9 +1088,11 @@
           </p>
           <p class="note reveal">우리가 사랑하는 Apple Watch와 피트니스로 계속 달리세요. 미리엄이 알아서 정리합니다.</p>
           <div class="ctas reveal">
-            <a class="btn btn-primary" href="#stats">기능 보기</a>
+            <a class="btn btn-primary" href="https://apps.apple.com/app/miriam-running-log/id6772893143">App Store에서 다운로드</a>
+            <a class="btn btn-ghost-dark" href="#stats">기능 보기</a>
             <a class="btn btn-ghost-dark" href="#feedback">피드백</a>
           </div>
+          <p class="requirement reveal">iOS 26 이상 필요</p>
         </div>
 
         <div class="hero-proof reveal" aria-label="미리엄 Summary 화면">
@@ -1357,14 +1366,17 @@
         <div class="channel">
           <h3>GitHub Issues</h3>
           <p>버그 제보와 기능 제안. 다른 사용자도 같은 문제를 검색할 수 있습니다.</p>
-          <!-- TODO: replace with actual repo URL -->
           <a href="https://github.com/ninehobbes/miriam-app/issues">github.com/ninehobbes/miriam-app/issues</a>
         </div>
         <div class="channel">
           <h3>GitHub Discussions</h3>
           <p>사용 후기, 자유 의견.</p>
-          <!-- TODO: enable Discussions tab, confirm URL -->
           <a href="https://github.com/ninehobbes/miriam-app/discussions">github.com/ninehobbes/miriam-app/discussions</a>
+        </div>
+        <div class="channel">
+          <h3>이메일</h3>
+          <p>GitHub 계정이 없거나 공개하기 어려운 문의.</p>
+          <a href="mailto:ninehobbes@gmail.com">ninehobbes@gmail.com</a>
         </div>
       </div>
     </div>
@@ -1414,6 +1426,12 @@
           Apple의 개인정보 처리방침이 적용됩니다.
         </p>
         <p>
+          <strong>카메라와 사진.</strong>
+          공유 카드에 사진 배경을 넣을 때만 카메라를 사용하고,
+          촬영한 사진을 사진 보관함에 저장합니다.
+          사진은 디바이스 안에서만 처리되며 외부로 전송하지 않습니다.
+        </p>
+        <p>
           <strong>결제 처리.</strong>
           앱 내 결제는 App Store를 통해 Apple이 직접 처리합니다.
           미리엄은 카드번호 등 결제 정보에 접근하거나 저장하지 않습니다.
@@ -1421,16 +1439,17 @@
         <p>
           <strong>데이터 보존 및 삭제.</strong>
           러닝 기록·캐시·설정은 모두 디바이스 안의 앱 영역에 저장되므로,
-          앱을 삭제하면 함께 사라집니다. (위 iCloud 항목에 따라 목표·코스만
-          iCloud에 별도 보관되며, iCloud 설정 → 저장 공간 → 미리엄에서
-          직접 삭제할 수 있습니다.) HealthKit 원본 데이터는
+          앱을 삭제하면 함께 사라집니다. (위 iCloud 항목에 따라 목표·코스는
+          iCloud에도 보관됩니다. 앱 안에서 목표나 코스를 삭제하면 iCloud에
+          저장된 내용에도 반영되며, 앱을 삭제한 뒤라면 다시 설치해 복원된
+          목표·코스를 앱 안에서 삭제할 수 있습니다.) HealthKit 원본 데이터는
           미리엄이 만들거나 수정하지 않으며, 건강 앱에서 직접 관리됩니다.
         </p>
         <p>
           <strong>이용자 권리.</strong>
           미리엄은 사용자의 개인정보를 수집하지 않으므로 열람·정정·삭제를
           요청할 대상 데이터가 없습니다. iCloud에 저장되는 목표·코스 데이터는
-          위 iCloud 항목의 방법으로 언제든지 직접 삭제할 수 있습니다.
+          위 데이터 보존 및 삭제 항목의 방법으로 언제든지 직접 삭제할 수 있습니다.
           데이터 처리와 관련한 질문은 아래 문의 채널로 연락해 주세요.
         </p>
         <p>
@@ -1445,7 +1464,7 @@
           또는 이메일(<a href="mailto:ninehobbes@gmail.com">ninehobbes@gmail.com</a>)로 보내주시면 됩니다.
         </p>
         <p style="margin-top: 20px; font-size: 13px; color: var(--fg-on-light-muted);">
-          최종 수정일: 2026년 8월 28일
+          최종 수정일: 2026년 9월 18일
         </p>
       </div>
     </div>
@@ -1458,6 +1477,7 @@
         <span>© <span id="year">2026</span> ninehobbes · 미리엄</span>
       </div>
       <div class="links">
+        <a href="https://apps.apple.com/app/miriam-running-log/id6772893143">App Store</a>
         <a href="https://github.com/ninehobbes/miriam-app">GitHub</a>
         <a href="awards.html">배지</a>
         <a href="#privacy">개인정보</a>
@@ -1533,6 +1553,12 @@
         "Apple Watch와 피트니스의 러닝 기록을 기간·코스·거리별로 살펴보고, 트렌드와 순위, 수상 이력까지 한눈에 확인하세요. 나만의 목표를 설정하고 연속 달성을 이어가세요.": { en: "Explore running data from Apple Watch and Apple Fitness by period, course, and distance. See trends, rankings, awards, goals, and streaks in one place.", ja: "Apple Watchとフィットネスのランニング記録を期間・コース・距離別に確認し、トレンド、ランキング、受賞履歴までひと目で把握できます。自分の目標を設定し、連続達成を続けましょう。" },
         "우리가 사랑하는 Apple Watch와 피트니스로 계속 달리세요. 미리엄이 알아서 정리합니다.": { en: "Keep running with Apple Watch and Apple Fitness. Miriam organizes the rest.", ja: "いつものApple Watchとフィットネスで走り続けてください。Miriamが記録を整理します。" },
         "기능 보기": { en: "Explore Features", ja: "機能を見る" },
+        "App Store에서 다운로드": { en: "Download on the App Store", ja: "App Storeでダウンロード" },
+        "iOS 26 이상 필요": { en: "Requires iOS 26 or later", ja: "iOS 26以降が必要です" },
+        "이메일": { en: "Email", ja: "メール" },
+        "GitHub 계정이 없거나 공개하기 어려운 문의.": { en: "For questions without a GitHub account, or anything you would rather not post publicly.", ja: "GitHubアカウントがない場合や、公開しにくいお問い合わせ。" },
+        "카메라와 사진.": { en: "Camera and photos.", ja: "カメラと写真。" },
+        "공유 카드에 사진 배경을 넣을 때만 카메라를 사용하고, 촬영한 사진을 사진 보관함에 저장합니다. 사진은 디바이스 안에서만 처리되며 외부로 전송하지 않습니다.": { en: "Miriam uses the camera only to add a photo background to a share card, and saves the photos you take to your photo library. Photos are processed only on the device and are never sent anywhere.", ja: "カメラはシェアカードに写真の背景を追加するときだけ使用し、撮影した写真を写真ライブラリに保存します。写真はデバイス内でのみ処理され、外部に送信されることはありません。" },
         "기능": { en: "Features", ja: "機能" },
         "HealthKit 기반": { en: "HealthKit-based", ja: "HealthKitベース" },
         "Apple Watch와 iPhone에 저장된 러닝 기록을 읽어옵니다.": { en: "Reads running records stored on Apple Watch and iPhone.", ja: "Apple WatchとiPhoneに保存されたランニング記録を読み込みます。" },
@@ -1596,16 +1622,16 @@
         "결제 처리.": { en: "Payment processing.", ja: "決済処理。" },
         "앱 내 결제는 App Store를 통해 Apple이 직접 처리합니다. 미리엄은 카드번호 등 결제 정보에 접근하거나 저장하지 않습니다.": { en: "In-app purchases are processed directly by Apple through the App Store. Miriam does not access or store payment details such as card numbers.", ja: "アプリ内課金はApp Storeを通じてAppleが直接処理します。Miriamはカード番号などの決済情報にアクセスまたは保存しません。" },
         "데이터 보존 및 삭제.": { en: "Data retention and deletion.", ja: "データの保存と削除。" },
-        "러닝 기록·캐시·설정은 모두 디바이스 안의 앱 영역에 저장되므로, 앱을 삭제하면 함께 사라집니다. (위 iCloud 항목에 따라 목표·코스만 iCloud에 별도 보관되며, iCloud 설정 → 저장 공간 → 미리엄에서 직접 삭제할 수 있습니다.) HealthKit 원본 데이터는 미리엄이 만들거나 수정하지 않으며, 건강 앱에서 직접 관리됩니다.": { en: "Running records, cache, and settings are stored in the app area on the device, so they are removed when the app is deleted. Goals and courses may remain in iCloud as described above and can be deleted from iCloud storage settings. Miriam does not create or modify original HealthKit data.", ja: "ランニング記録、キャッシュ、設定はすべてデバイス内のアプリ領域に保存されるため、アプリを削除すると一緒に削除されます。上記のiCloud項目に従い、目標とコースのみiCloudに保存される場合があり、iCloudのストレージ設定から削除できます。MiriamはHealthKitの元データを作成または変更しません。" },
+        "러닝 기록·캐시·설정은 모두 디바이스 안의 앱 영역에 저장되므로, 앱을 삭제하면 함께 사라집니다. (위 iCloud 항목에 따라 목표·코스는 iCloud에도 보관됩니다. 앱 안에서 목표나 코스를 삭제하면 iCloud에 저장된 내용에도 반영되며, 앱을 삭제한 뒤라면 다시 설치해 복원된 목표·코스를 앱 안에서 삭제할 수 있습니다.) HealthKit 원본 데이터는 미리엄이 만들거나 수정하지 않으며, 건강 앱에서 직접 관리됩니다.": { en: "Running records, cache, and settings are stored in the app area on the device, so they are removed when the app is deleted. Goals and courses are also kept in iCloud as described above. Deleting a goal or course in the app also removes it from iCloud; if you have already deleted the app, reinstall it to restore your goals and courses, then delete them in the app. Miriam does not create or modify original HealthKit data, which is managed in the Health app.", ja: "ランニング記録、キャッシュ、設定はすべてデバイス内のアプリ領域に保存されるため、アプリを削除すると一緒に削除されます。上記のiCloud項目のとおり、目標とコースはiCloudにも保存されます。アプリ内で目標やコースを削除するとiCloudの保存内容にも反映されます。アプリを削除した後の場合は、再インストールして復元された目標やコースをアプリ内で削除できます。MiriamはHealthKitの元データを作成または変更せず、元データはヘルスケアアプリで管理されます。" },
         "이용자 권리.": { en: "Your rights.", ja: "利用者の権利。" },
-        "미리엄은 사용자의 개인정보를 수집하지 않으므로 열람·정정·삭제를 요청할 대상 데이터가 없습니다. iCloud에 저장되는 목표·코스 데이터는 위 iCloud 항목의 방법으로 언제든지 직접 삭제할 수 있습니다. 데이터 처리와 관련한 질문은 아래 문의 채널로 연락해 주세요.": { en: "Because Miriam does not collect personal data, there is no stored data to access, correct, or delete on request. Goals and course data kept in iCloud can be deleted at any time as described in the iCloud section above. If you have questions about data handling, please reach out through the contact channels below.", ja: "Miriamは個人データを収集しないため、開示・訂正・削除を請求できる保存データはありません。iCloudに保存される目標・コースデータは、上記iCloud項目の方法でいつでも削除できます。データの取り扱いについてご質問がある場合は、下記の連絡先までお問い合わせください。" },
+        "미리엄은 사용자의 개인정보를 수집하지 않으므로 열람·정정·삭제를 요청할 대상 데이터가 없습니다. iCloud에 저장되는 목표·코스 데이터는 위 데이터 보존 및 삭제 항목의 방법으로 언제든지 직접 삭제할 수 있습니다. 데이터 처리와 관련한 질문은 아래 문의 채널로 연락해 주세요.": { en: "Because Miriam does not collect personal data, there is no stored data to access, correct, or delete on request. Goals and course data kept in iCloud can be deleted at any time as described under Data retention and deletion above. If you have questions about data handling, please reach out through the contact channels below.", ja: "Miriamは個人データを収集しないため、開示・訂正・削除を請求できる保存データはありません。iCloudに保存される目標・コースデータは、上記「データの保存と削除」の方法でいつでも削除できます。データの取り扱いについてご質問がある場合は、下記の連絡先までお問い合わせください。" },
         "감독기관 제소권.": { en: "Right to lodge a complaint.", ja: "監督機関への申立権。" },
         "유럽연합 거주자는 개인정보 처리와 관련하여 거주 국가의 개인정보 감독기관에 이의를 제기할 권리가 있습니다.": { en: "Residents of the European Union have the right to lodge a complaint with their national data protection supervisory authority regarding the processing of personal data.", ja: "欧州連合(EU)在住の方は、個人データの取り扱いについて、居住国のデータ保護監督機関に申し立てる権利があります。" },
         "문의.": { en: "Contact.", ja: "お問い合わせ。" },
         "개인정보 처리와 관련한 문의는": { en: "For privacy-related questions, contact us through", ja: "プライバシーに関するお問い合わせは" },
         "또는 이메일(": { en: " or email (", ja: "またはメール(" },
         ")로 보내주시면 됩니다.": { en: ").", ja: ")までお願いします。" },
-        "최종 수정일: 2026년 8월 28일": { en: "Last updated: August 28, 2026", ja: "最終更新日: 2026年8月28日" }
+        "최종 수정일: 2026년 9월 18일": { en: "Last updated: September 18, 2026", ja: "最終更新日: 2026年9月18日" }
       },
       attrs: {
         ".hero-proof": {

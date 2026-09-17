@@ -6,7 +6,7 @@
 
 이 저장소는 미리엄의 랜딩 페이지와 이슈 트래커 역할만 합니다 — 앱 소스코드는 포함돼 있지 않습니다.
 
-<!-- TODO: 출시 후 App Store 다운로드 배지/링크 추가 -->
+**[App Store에서 다운로드](https://apps.apple.com/app/miriam-running-log/id6772893143)**
 
 스크린샷과 자세한 기능은 [웹사이트](https://ninehobbes.github.io/miriam-app/)를 참고하세요.
 
