@@ -294,6 +294,18 @@
       color: var(--fg-on-dark-muted);
     }
 
+    .hero p.requirement a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: color 0.2s;
+    }
+
+    .hero p.requirement a:hover {
+      color: var(--fg-on-dark);
+    }
+
     .hero p.requirement + p.requirement {
       margin-top: 6px;
     }
@@ -312,7 +324,7 @@
     .hero-phone {
       position: relative;
       width: min(330px, 86vw);
-      aspect-ratio: 9 / 19.5;
+      aspect-ratio: 1350 / 2760;
       filter:
         drop-shadow(0 26px 60px rgba(0, 0, 0, 0.55)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.3));
       /* Same GPU-promotion fix as .phone */
@@ -325,7 +337,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url("assets/iphone-frame.svg") center / contain no-repeat;
+      background: url("assets/iphone-frame.png") center / contain no-repeat;
       pointer-events: none;
       z-index: 2;
     }
@@ -333,11 +345,11 @@
     .hero-phone>img,
     .hero-phone>video {
       position: absolute;
-      top: 1.41%;
-      left: 3.06%;
-      width: 93.89%;
-      height: 97.18%;
-      border-radius: 11.54% / 5.15%;
+      top: 2.5%;
+      left: 5.333%;
+      width: 89.333%;
+      height: 95%;
+      border-radius: 14.1% / 6.48%;
       object-fit: cover;
       display: block;
       background: #000;
@@ -621,7 +633,7 @@
       position: relative;
       width: 100%;
       max-width: 300px;
-      aspect-ratio: 9 / 19.5;
+      aspect-ratio: 1350 / 2760;
       filter:
         drop-shadow(0 18px 36px rgba(0, 0, 0, 0.22)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.14));
       /* Force GPU compositing from initial paint —
@@ -636,7 +648,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: url("assets/iphone-frame.svg") center / contain no-repeat;
+      background: url("assets/iphone-frame.png") center / contain no-repeat;
       pointer-events: none;
       z-index: 2;
     }
@@ -644,11 +656,11 @@
     .phone>img,
     .phone>video {
       position: absolute;
-      top: 1.41%;
-      left: 3.06%;
-      width: 93.89%;
-      height: 97.18%;
-      border-radius: 11.54% / 5.15%;
+      top: 2.5%;
+      left: 5.333%;
+      width: 89.333%;
+      height: 95%;
+      border-radius: 14.1% / 6.48%;
       object-fit: cover;
       display: block;
       background: #000;
@@ -874,33 +886,24 @@
       width: 100%;
     }
 
-    /* ===== BASICS ===== */
-    .basics {
-      padding: 96px 0;
-    }
-
-    .basics h3.basics-head {
+    /* ===== DUO + BASICS ===== */
+    .devices h3.basics-head {
       font-size: 15px;
       font-weight: 600;
-      color: var(--fg-on-light);
-      margin: 0 0 36px;
+      color: var(--fg-on-dark);
+      margin: 88px 0 36px;
     }
 
     .basics-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
     }
 
-    @media (max-width: 1000px) {
-      .basics-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 560px) {
+    @media (max-width: 700px) {
       .basics-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
       }
     }
 
@@ -918,8 +921,60 @@
 
     .basics-label {
       font-size: 13px;
-      color: var(--fg-on-light-soft);
+      color: var(--fg-on-dark-soft);
       text-align: center;
+    }
+
+    .duo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 700px) {
+      .duo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .duo-item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .duo-device {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3093 / 2247;
+      filter:
+        drop-shadow(0 22px 50px rgba(0, 0, 0, 0.55)) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.3));
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .duo-device::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("assets/iphone-duo-frame.png") center / contain no-repeat;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .duo-device img {
+      position: absolute;
+      top: 5.34%;
+      left: 3.88%;
+      width: 92.24%;
+      height: 89.319%;
+      border-radius: 5.26% / 7.47%;
+      object-fit: cover;
+      display: block;
+      background: #000;
+      z-index: 1;
     }
 
     .basics-foot {
@@ -1066,6 +1121,7 @@
         <a class="badge-link" href="awards.html">배지</a>
         <a href="#share">공유</a>
         <a href="#widgets">위젯</a>
+        <a href="#duo">듀오</a>
       </div>
       <div class="lang-switch" aria-label="Language">
         <button type="button" data-lang-option="ko">KO</button>
@@ -1096,7 +1152,7 @@
             <a class="btn btn-ghost-dark" href="#overview">기능 보기</a>
             <a class="btn btn-ghost-dark" href="#feedback">피드백</a>
           </div>
-          <p class="requirement reveal">iOS 26 이상 필요</p>
+          <p class="requirement reveal"><span>iOS 26 이상 필요</span> · <a href="#duo">iPhone Duo 펼친 화면 지원</a></p>
           <p class="requirement reveal">이 페이지의 화면과 설명은 다음 업데이트 기준이라, 일부가 현재 App Store 버전과 다를 수 있습니다.</p>
         </div>
 
@@ -1335,25 +1391,44 @@
   </section>
 
   <!-- ===== BASICS ===== -->
-  <section class="basics softlight" data-nav="light">
-    <div class="container reveal">
-      <h3 class="basics-head">기본 기능</h3>
-      <div class="basics-grid">
-        <div class="basics-item">
-          <div class="phone"><img src="screenshots/basics-detail.jpg" alt="러닝 상세 차트" /></div>
-          <span class="basics-label">러닝 상세 차트</span>
+  <section class="dark devices" id="duo" data-nav="dark">
+    <div class="container">
+      <div class="sec-head reveal">
+        <h2>iPhone Duo의 넓은 화면에 맞췄습니다</h2>
+        <p>
+          왼쪽에서 고른 세션이나 기록이 오른쪽에 바로 열립니다. 화면을 오가지 않고
+          목록과 상세를 함께 볼 수 있고, 필요할 땐 오른쪽 화면만 전체로 키워 볼 수도 있습니다.
+        </p>
+      </div>
+      <div class="duo-grid reveal">
+        <div class="duo-item">
+          <div class="duo-device"><img src="screenshots/duo-summary.jpg" alt="iPhone Duo 펼친 화면 — 요약과 세션 상세" loading="lazy" /></div>
+          <span class="basics-label">요약과 세션 상세</span>
         </div>
-        <div class="basics-item">
-          <div class="phone"><img src="screenshots/basics-segments.jpg" alt="km 단위 구간 분석" /></div>
-          <span class="basics-label">구간 분석</span>
+        <div class="duo-item">
+          <div class="duo-device"><img src="screenshots/duo-records.jpg" alt="iPhone Duo 펼친 화면 — 기록과 연간 베스트" loading="lazy" /></div>
+          <span class="basics-label">기록과 연간 베스트</span>
         </div>
-        <div class="basics-item">
-          <div class="phone"><img src="screenshots/basics-hr-zones.jpg" alt="심박 영역" /></div>
-          <span class="basics-label">심박존</span>
-        </div>
-        <div class="basics-item">
-          <div class="phone"><img src="screenshots/basics-darklight.jpg" alt="다크 / 라이트 모드" /></div>
-          <span class="basics-label">다크 / 라이트 모드</span>
+      </div>
+      <div class="reveal">
+        <h3 class="basics-head">기본 기능</h3>
+        <div class="basics-grid">
+          <div class="basics-item">
+            <div class="phone"><img src="screenshots/basics-detail.jpg" alt="러닝 상세 차트" /></div>
+            <span class="basics-label">러닝 상세 차트</span>
+          </div>
+          <div class="basics-item">
+            <div class="phone"><img src="screenshots/basics-segments.jpg" alt="km 단위 구간 분석" /></div>
+            <span class="basics-label">구간 분석</span>
+          </div>
+          <div class="basics-item">
+            <div class="phone"><img src="screenshots/basics-hr-zones.jpg" alt="심박 영역" /></div>
+            <span class="basics-label">심박존</span>
+          </div>
+          <div class="basics-item">
+            <div class="phone"><img src="screenshots/basics-darklight.jpg" alt="다크 / 라이트 모드" /></div>
+            <span class="basics-label">다크 / 라이트 모드</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1613,6 +1688,12 @@
         "구간 분석": { en: "Segment analysis", ja: "区間分析" },
         "심박존": { en: "Heart-rate zones", ja: "心拍ゾーン" },
         "다크 / 라이트 모드": { en: "Dark / Light mode", ja: "ダーク / ライトモード" },
+        "iPhone Duo의 넓은 화면에 맞췄습니다": { en: "Made for the wide screen of iPhone Duo", ja: "iPhone Duoの大きな画面に合わせました" },
+        "왼쪽에서 고른 세션이나 기록이 오른쪽에 바로 열립니다. 화면을 오가지 않고 목록과 상세를 함께 볼 수 있고, 필요할 땐 오른쪽 화면만 전체로 키워 볼 수도 있습니다.": { en: "Pick a session or record on the left and it opens right beside it. See the list and details together without switching screens, or expand just the right side to full screen when you need more room.", ja: "左で選んだセッションや記録が、すぐ右側に開きます。画面を行き来せずにリストと詳細を一緒に見られ、必要なときは右側の画面だけを全画面に広げることもできます。" },
+        "요약과 세션 상세": { en: "Summary and session details", ja: "サマリーとセッション詳細" },
+        "기록과 연간 베스트": { en: "Records and yearly bests", ja: "記録と年間ベスト" },
+        "iPhone Duo 펼친 화면 지원": { en: "Supports iPhone Duo unfolded", ja: "iPhone Duoの展開画面に対応" },
+        "듀오": { en: "Duo", ja: "Duo" },
         "다음 채널 중 편한 곳으로 보내주시면 됩니다.": { en: "Send feedback through whichever channel works best for you.", ja: "使いやすいチャンネルからフィードバックをお送りください。" },
         "버그 제보와 기능 제안. 다른 사용자도 같은 문제를 검색할 수 있습니다.": { en: "Bug reports and feature requests. Other users can search for the same issue.", ja: "バグ報告と機能提案。他のユーザーも同じ問題を検索できます。" },
         "사용 후기, 자유 의견.": { en: "General impressions and open comments.", ja: "使用感や自由な意見。" },
